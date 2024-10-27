@@ -10,5 +10,5 @@
 [resource]
 script = ExtResource("1_43qsd")
 LeFishResources = Array[Object]([ExtResource("4_gwgna"), ExtResource("3_umqgg"), ExtResource("2_sgq7l"), ExtResource("1_iw5wl")])
-myEvent = ExtResource("5_wt8xy")
+MyEvent = ExtResource("5_wt8xy")
 Name = "Day3"

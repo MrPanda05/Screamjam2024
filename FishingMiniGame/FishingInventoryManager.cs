@@ -6,6 +6,9 @@ using Commons;
 namespace FishingMiniGame
 {
     
+    /// <summary>
+    /// Maneges the inventory
+    /// </summary>
     public partial class FishingInventoryManager : Node
     {
         public static FishingInventoryManager Instance { get; private set; }
@@ -17,7 +20,7 @@ namespace FishingMiniGame
 
         public bool HasSeenCorpse { get; private set; }
 
-        public Action OnFishCaught;
+        public Action<FishType> OnFishCaught;
         public Action OnHumanHeadCaught;
         private void IncrementCounter(FishType fishType)
         {
@@ -52,10 +55,23 @@ namespace FishingMiniGame
                 return;
             }//human head change state back to run
             IncrementCounter(fishType);
-            OnFishCaught?.Invoke();
+            OnFishCaught?.Invoke(fishType);
+        }
+        public void ResetCounters()
+        {
+            SalmonCaught = 0;
+            TunaCaught = 0;
+            TilapiaCaught = 0;
+            CarpaCaught = 0;
+            FishesCaughtTotal = 0;
         }
         public override void _Ready()
         {
+            if (Instance != null)
+            {
+                QueueFree();
+                return;
+            }
             Instance = this;
         }
     }

@@ -6,6 +6,9 @@ using System;
 
 namespace FishingMiniGame
 {
+    /// <summary>
+    /// Enums of types of fish
+    /// </summary>
     public enum FishType
     {
         Tuna,
@@ -15,11 +18,14 @@ namespace FishingMiniGame
         other,
         NULL
     }
+    /// <summary>
+    /// Manages the current day fish pool
+    /// </summary>
     public partial class FishingPoolManager : Node
     {
         public static FishingPoolManager Instance { get; private set; }
         [Export]
-        private FishPoolResource fishPool;
+        private FishPoolResource fishPool;//Current day fish pool
 
         //Get random fish from the current pool
         public FishType GetFishFromTheCurrentPool()
@@ -31,23 +37,30 @@ namespace FishingMiniGame
             return fishPool.LeFishResources[(int)randFishNum].fishType;
 
         }
+        public FishPoolResource GetCurrentResouce()
+        {
+            return fishPool;
+        }
         public void ChangeCurrentPool(string path)
         {
             fishPool = GD.Load<FishPoolResource>(path);
         }
-        //Fish pool will have a resource that has a variable
-        public void TriggerEventOfFishingPool()
+        /// <summary>
+        /// trigger something after a fish is caught
+        /// </summary>
+        /// <param name="fishType">type of fish caught</param>
+        public void TriggerEventOfFishingPool(FishType fishType)
         {
-            fishPool?.myEvent.LeEvent(fishPool, FishingInventoryManager.Instance.FishesCaughtTotal);
-            //if (fishPool.Name == "Day3" && FishingInventoryManager.Instance.FishesCaughtTotal > 2)
-            //{
-            //    ChangeCurrentPool(Constants.FISHING_CORPSE_POOL);
-            //}
+            fishPool.MyEvent?.LeEvent(fishPool, FishingInventoryManager.Instance.FishesCaughtTotal, fishType);
         }
         public override void _Ready()
         {
+            if (Instance != null)
+            {
+                QueueFree();
+                return;
+            }
             Instance = this;
-            GD.Print(fishPool.Name);
             FishingInventoryManager.Instance.OnFishCaught += TriggerEventOfFishingPool;
         }
         public override void _ExitTree()

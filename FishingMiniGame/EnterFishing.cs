@@ -6,6 +6,9 @@ using Commons;
 
 namespace FishingMiniGame
 {
+    /// <summary>
+    /// Makes player enter the fishing state
+    /// </summary>
     public partial class EnterFishing : Node3D, IInteractable
     {
         public Action OnInteraction { get; set; }

@@ -11,6 +11,11 @@ namespace Commons.Managers
         public static Action OnIsPlayingChanged;
         public override void _Ready()
         {
+            if (Instance != null)
+            {
+                QueueFree();
+                return;
+            }
             Instance = this;
         }
         public static void SetIsPlaying(bool newValue)

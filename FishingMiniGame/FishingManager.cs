@@ -3,6 +3,9 @@ using System;
 
 namespace FishingMiniGame
 {
+    /// <summary>
+    /// Maneges the fishing minigame
+    /// </summary>
     public partial class FishingManager : Node
     {
         public static FishingManager Instance { get; private set; }
@@ -115,6 +118,11 @@ namespace FishingMiniGame
 
         public override void _Ready()
         {
+            if (Instance != null)
+            {
+                QueueFree();
+                return;
+            }
             Instance = this;
             timerToFishApear = GetNode<Timer>("TimerToFishApear");
             timerToFishEscape = GetNode<Timer>("TimerToFishEscape");
