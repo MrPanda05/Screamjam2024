@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d34hdyjav21xa"]
+
+[ext_resource type="Script" path="res://Commons/Constants.cs" id="1_fturq"]
+
+[node name="CONSTANTS" type="Node" groups=["CONSTANTS"]]
+script = ExtResource("1_fturq")

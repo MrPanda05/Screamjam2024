@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://belqv623htmui"]
+
+[ext_resource type="Script" path="res://LePlayer/Player.cs" id="1_y33sk"]
+[ext_resource type="Script" path="res://LePlayer/Head.cs" id="2_a8x5g"]
+[ext_resource type="PackedScene" uid="uid://de2ogan80q6ki" path="res://Commons/Components/VelocityComponent3D.tscn" id="3_elduw"]
+[ext_resource type="PackedScene" uid="uid://ckv3k0str6a1m" path="res://Commons/FSM/FiniteStateMachine.tscn" id="4_8c6fr"]
+[ext_resource type="Script" path="res://LePlayer/States/PlayerMovementState.cs" id="5_me2l2"]
+[ext_resource type="Script" path="res://LePlayer/States/FishingState.cs" id="6_smgnj"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_lglip"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4jcex"]
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("velocityComp", "Head", "Camera", "FSM") groups=["Player"]]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
+collision_mask = 28
+script = ExtResource("1_y33sk")
+velocityComp = NodePath("VelocityComponent3D")
+Sens = 0.005
+Head = NodePath("Head")
+Camera = NodePath("Head/POV")
+FSM = NodePath("FiniteStateMachine")
+
+[node name="Head" type="Node3D" parent="."]
+script = ExtResource("2_a8x5g")
+
+[node name="POV" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841568, 0)
+fov = 90.0
+
+[node name="Raycast" type="RayCast3D" parent="Head/POV"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.00345048, -0.0191277, -0.489596)
+target_position = Vector3(0, 0, -6)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = SubResource("CapsuleMesh_lglip")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_4jcex")
+
+[node name="VelocityComponent3D" parent="." node_paths=PackedStringArray("myIndividual") instance=ExtResource("3_elduw")]
+Speed = 1600.0
+MaxSpeed = 3200.0
+JumpForce = 12.5
+GravityForce = 70.0
+TerminalVelocity = 20.0
+SprintSpeed = 12.0
+BaseSpeed = 6.0
+myIndividual = NodePath("..")
+
+[node name="FiniteStateMachine" parent="." instance=ExtResource("4_8c6fr")]
+InitialState = NodePath("PlayerMovementState")
+
+[node name="PlayerMovementState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("5_me2l2")
+
+[node name="FishingState" type="Node" parent="FiniteStateMachine"]
+script = ExtResource("6_smgnj")

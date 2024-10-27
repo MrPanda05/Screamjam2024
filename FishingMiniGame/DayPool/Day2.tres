@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="FishPoolResource" load_steps=5 format=3 uid="uid://3sxxa6dr42yf"]
+
+[ext_resource type="Resource" uid="uid://bepws7lb3bh0m" path="res://FishingMiniGame/Fishes/Salmon.tres" id="1_ak6uq"]
+[ext_resource type="Resource" uid="uid://5cmppt4mxd78" path="res://FishingMiniGame/Fishes/Tuna.tres" id="1_ktcdt"]
+[ext_resource type="Script" path="res://FishingMiniGame/DayPool/FishPoolResource.cs" id="1_vhi26"]
+[ext_resource type="Resource" uid="uid://c7uve1o44fc7b" path="res://FishingMiniGame/Fishes/Tilapia.tres" id="2_rktj2"]
+
+[resource]
+script = ExtResource("1_vhi26")
+LeFishResources = Array[Object]([ExtResource("1_ak6uq"), ExtResource("1_ktcdt"), ExtResource("2_rktj2")])
+Name = "Day2"

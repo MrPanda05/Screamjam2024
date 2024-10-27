@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://bn1h57r66h5f1"]
+
+[ext_resource type="PackedScene" uid="uid://dg451yda12u8a" path="res://Levels/FestivalBase.tscn" id="1_uhao4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_12ey6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nrefu"]
+
+[node name="Day1Festival" type="Node3D"]
+
+[node name="FestivalBase" parent="." instance=ExtResource("1_uhao4")]
+
+[node name="CarTestMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.21903, 0, 0, 0, 1.87982, 0, 0, 0, 2.67653, -19.6847, 2.09147, -17.6679)
+mesh = SubResource("BoxMesh_12ey6")
+
+[node name="CarTestMesh2" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.21903, 0, 0, 0, 1.87982, 0, 0, 0, 2.67653, -19.8536, 2.09147, -23.8113)
+mesh = SubResource("BoxMesh_12ey6")
+
+[node name="CarTestMesh3" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.21903, 0, 0, 0, 1.87982, 0, 0, 0, 2.67653, -19.8536, 2.09147, -33.3436)
+mesh = SubResource("BoxMesh_12ey6")
+
+[node name="CarTestMesh4" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.21903, 0, 0, 0, 1.87982, 0, 0, 0, 2.67653, -19.8536, 2.09147, -28.9429)
+mesh = SubResource("BoxMesh_12ey6")
+
+[node name="CarTestMesh5" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.21903, 0, 0, 0, 1.87982, 0, 0, 0, 2.67653, 12.117, 2.09147, -28.9429)
+mesh = SubResource("BoxMesh_12ey6")
+
+[node name="CarTestMesh6" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.21903, 0, 0, 0, 1.87982, 0, 0, 0, 2.67653, 12.117, 2.09147, -21.6599)
+mesh = SubResource("BoxMesh_12ey6")
+
+[node name="CarTestMesh7" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.21903, 0, 0, 0, 1.87982, 0, 0, 0, 2.67653, 12.117, 2.09147, -39.4912)
+mesh = SubResource("BoxMesh_12ey6")
+
+[node name="CarTestMesh8" type="MeshInstance3D" parent="."]
+transform = Transform3D(5.21903, 0, 0, 0, 1.87982, 0, 0, 0, 2.67653, 12.117, 2.09147, -34.6621)
+mesh = SubResource("BoxMesh_12ey6")
+
+[node name="Cabin2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.02367, 0, 0, 0, 2.50351, 0, 0, 0, 6.05053, 7.02271, 1.65003, 6.97835)
+mesh = SubResource("BoxMesh_nrefu")
+
+[node name="Cabin3" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.02367, 0, 0, 0, 2.50351, 0, 0, 0, 6.05053, 7.02271, 1.65003, 22.3287)
+mesh = SubResource("BoxMesh_nrefu")
+
+[node name="Cabin4" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.02367, 0, 0, 0, 2.50351, 0, 0, 0, 6.05053, -14.9973, 1.65003, 22.3287)
+mesh = SubResource("BoxMesh_nrefu")
+
+[node name="Cabin5" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.02367, 0, 0, 0, 2.26256, 2.58994, 0, -1.07163, 5.46819, -14.9973, 0.33961, 9.38056)
+mesh = SubResource("BoxMesh_nrefu")
+
+[node name="Cabin7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-8.84573e-08, 0, 6.05053, 0, 2.50351, 0, -2.02367, 0, -2.64477e-07, -4.13286, 1.65003, 32.7822)
+mesh = SubResource("BoxMesh_nrefu")

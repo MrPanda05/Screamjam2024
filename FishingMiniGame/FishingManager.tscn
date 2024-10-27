@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjuejaqtx1sp2"]
+
+[ext_resource type="Script" path="res://FishingMiniGame/FishingManager.cs" id="1_hb7k4"]
+[ext_resource type="Script" path="res://FishingMiniGame/FishingInventoryManager.cs" id="2_shjfo"]
+[ext_resource type="Script" path="res://FishingMiniGame/FishingPoolManager.cs" id="3_m0tkw"]
+[ext_resource type="Resource" uid="uid://bpf3hawjh1fa4" path="res://FishingMiniGame/DayPool/Day3.tres" id="4_ijb4e"]
+
+[node name="FishingManager" type="Node" groups=["FishingManager"]]
+script = ExtResource("1_hb7k4")
+
+[node name="TimerToFishApear" type="Timer" parent="."]
+one_shot = true
+
+[node name="TimerToFishEscape" type="Timer" parent="."]
+one_shot = true
+
+[node name="FishingInventoryManager" type="Node" parent="." groups=["FishingInventoryManager"]]
+script = ExtResource("2_shjfo")
+
+[node name="FishingPoolManager" type="Node" parent="." groups=["FishingPoolManager"]]
+editor_description = "Managers what fish to pull based on a node that has a pool of fishes, changes if something happens"
+script = ExtResource("3_m0tkw")
+fishPool = ExtResource("4_ijb4e")
+
+[connection signal="timeout" from="TimerToFishApear" to="." method="OnTimerToFishApearTimeout"]
+[connection signal="timeout" from="TimerToFishEscape" to="." method="OnTimerToFishEscapeTimeout"]

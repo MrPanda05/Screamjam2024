@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://1x7jwpbwa2ec"
+path="res://.godot/imported/festivalmap.map-6a957ebae66901145cf13e5bc5778a99.tres"
+
+[deps]
+
+source_file="res://Levels/QuakeMapsModels/festivalmap.map"
+dest_files=["res://.godot/imported/festivalmap.map-6a957ebae66901145cf13e5bc5778a99.tres"]
+
+[params]
+
