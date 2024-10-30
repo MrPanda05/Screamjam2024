@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://Commons/Constants.cs" id="1_fturq"]
 
 [node name="CONSTANTS" type="Node" groups=["CONSTANTS"]]
+process_mode = 3
 script = ExtResource("1_fturq")

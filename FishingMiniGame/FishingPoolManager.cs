@@ -25,25 +25,29 @@ namespace FishingMiniGame
     {
         public static FishingPoolManager Instance { get; private set; }
         [Export]
-        private FishPoolResource fishPool;//Current day fish pool
+        private FishPoolResource _fishPool;//Current day fish pool
 
         //Get random fish from the current pool
         public FishType GetFishFromTheCurrentPool()
         {
-            int poolSize = fishPool.LeFishResources.Count;
+            int poolSize = _fishPool.LeFishResources.Count;
             var rng = new RandomNumberGenerator();
             uint randFishNum = rng.Randi() % (uint)poolSize;
-            GD.Print(fishPool.LeFishResources[(int)randFishNum].fishType);
-            return fishPool.LeFishResources[(int)randFishNum].fishType;
+            GD.Print(_fishPool.LeFishResources[(int)randFishNum].fishType);
+            return _fishPool.LeFishResources[(int)randFishNum].fishType;
 
+        }
+        public void SetCurrentPool(string path)
+        {
+            _fishPool = GD.Load<FishPoolResource>(path);
         }
         public FishPoolResource GetCurrentResouce()
         {
-            return fishPool;
+            return _fishPool;
         }
         public void ChangeCurrentPool(string path)
         {
-            fishPool = GD.Load<FishPoolResource>(path);
+            _fishPool = GD.Load<FishPoolResource>(path);
         }
         /// <summary>
         /// trigger something after a fish is caught
@@ -51,7 +55,7 @@ namespace FishingMiniGame
         /// <param name="fishType">type of fish caught</param>
         public void TriggerEventOfFishingPool(FishType fishType)
         {
-            fishPool.MyEvent?.LeEvent(fishPool, FishingInventoryManager.Instance.FishesCaughtTotal, fishType);
+            _fishPool.MyEvent?.LeEvent(_fishPool, FishingInventoryManager.Instance.FishesCaughtTotal, fishType);
         }
         public override void _Ready()
         {

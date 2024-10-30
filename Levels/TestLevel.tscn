@@ -1,13 +1,13 @@
-[gd_scene load_steps=20 format=4 uid="uid://c7fnrrbxxiaeb"]
+[gd_scene load_steps=18 format=4 uid="uid://c7fnrrbxxiaeb"]
 
 [ext_resource type="PackedScene" uid="uid://belqv623htmui" path="res://LePlayer/Player.tscn" id="1_2vlvr"]
-[ext_resource type="PackedScene" uid="uid://cd6wc3r3lqw5e" path="res://InteractionSystem/InteractableArea.tscn" id="2_gt23e"]
-[ext_resource type="Script" path="res://FishingMiniGame/EnterFishing.cs" id="3_ef8g4"]
+[ext_resource type="PackedScene" uid="uid://blw6y7ebsju6s" path="res://FishingMiniGame/EnterFishingInteractable.tscn" id="2_am2eo"]
 [ext_resource type="Script" path="res://addons/func_godot/src/map/func_godot_map.gd" id="4_e1qwi"]
 [ext_resource type="Resource" uid="uid://bkhxcqsquw1yg" path="res://addons/func_godot/func_godot_default_map_settings.tres" id="5_fplwd"]
 [ext_resource type="Texture2D" uid="uid://cyg2snr1w5xw5" path="res://addons/func_godot/textures/default_texture.png" id="6_a8njn"]
 [ext_resource type="PackedScene" uid="uid://dg451yda12u8a" path="res://Levels/FestivalBase.tscn" id="7_slf1u"]
 [ext_resource type="PackedScene" uid="uid://coxhwhxawdc1m" path="res://Models/Fishingrod.tscn" id="8_eb8fo"]
+[ext_resource type="PackedScene" uid="uid://brdfquwtwre35" path="res://DialogueSystem/TestDialogueNpc.tscn" id="8_fseuq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ovqxo"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -26,10 +26,6 @@ glow_enabled = true
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_10yx3"]
 points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5j6jr"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ka3l1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jgqkw"]
 albedo_texture = ExtResource("6_a8njn")
@@ -81,19 +77,7 @@ collision_mask = 33
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_10yx3")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83486, 1, 0)
-mesh = SubResource("BoxMesh_5j6jr")
-
-[node name="InteractableArea" parent="MeshInstance3D2" instance=ExtResource("2_gt23e")]
-canRepeat = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/InteractableArea"]
-shape = SubResource("BoxShape3D_ka3l1")
-
-[node name="EnterFishing" type="Node3D" parent="MeshInstance3D2/InteractableArea" node_paths=PackedStringArray("Area")]
-script = ExtResource("3_ef8g4")
-Area = NodePath("..")
+[node name="MeshInstance3D2" parent="." instance=ExtResource("2_am2eo")]
 
 [node name="FuncGodotMap" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.5144)
@@ -117,3 +101,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.8087, 0, -4.56043)
 
 [node name="fishingrod" parent="." instance=ExtResource("8_eb8fo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.7538, 4.26792, -30.7964)
+
+[node name="TestDialogueNPC" parent="." instance=ExtResource("8_fseuq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.32057, 0.217907, 5.52045)

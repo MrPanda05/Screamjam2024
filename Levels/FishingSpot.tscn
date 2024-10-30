@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4r1rjyuxkcov"]
+
+[ext_resource type="Script" path="res://Levels/FishingSpot.cs" id="1_c2aqx"]
+[ext_resource type="PackedScene" uid="uid://blw6y7ebsju6s" path="res://FishingMiniGame/EnterFishingInteractable.tscn" id="2_w86cs"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a4fbv"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ew3t2"]
+sky_material = SubResource("ProceduralSkyMaterial_a4fbv")
+
+[sub_resource type="Environment" id="Environment_op417"]
+background_mode = 2
+sky = SubResource("Sky_ew3t2")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_53ok0"]
+albedo_color = Color(0.337255, 1, 1, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_np3de"]
+material = SubResource("StandardMaterial3D_53ok0")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_41p6y"]
+points = PackedVector3Array(-1, 0, -1, -1, 0, 1, 1, 0, -1, 1, 0, 1)
+
+[node name="FishingSpot" type="Node3D" node_paths=PackedStringArray("spawnPosition")]
+script = ExtResource("1_c2aqx")
+spawnPosition = NodePath("Spawnposition")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_op417")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(13.7554, 0, 0, 0, 13.7554, 0, 0, 0, 13.7554, 0, 0, 0)
+mesh = SubResource("PlaneMesh_np3de")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+collision_layer = 12
+collision_mask = 33
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_41p6y")
+
+[node name="MeshInstance3D2" parent="." instance=ExtResource("2_w86cs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.852407, 0.999999, -7.05343)
+
+[node name="Spawnposition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30483, 6.56046)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://cs2p8sd8ls2re"]
+
+[ext_resource type="Script" path="res://DialogueSystem/DialogueResouces/DialogueResource.cs" id="1_i7u6g"]
+
+[resource]
+script = ExtResource("1_i7u6g")
+Pages = Array[Dictionary]([{
+"Bob": "Hey",
+"You": "Hey bob"
+}, {
+"Bob": "You need to go fishing",
+"You": "Ok!"
+}])

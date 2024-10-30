@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnabx02mfgpch"]
+
+[ext_resource type="Script" path="res://UI/GameUi.cs" id="1_7urfi"]
+[ext_resource type="PackedScene" uid="uid://cfy3jp3ps20dt" path="res://UI/DialogueSystem/DialogueBox.tscn" id="2_rqy2p"]
+
+[node name="GameUI" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
+script = ExtResource("1_7urfi")
+
+[node name="DialogueBox" parent="." instance=ExtResource("2_rqy2p")]

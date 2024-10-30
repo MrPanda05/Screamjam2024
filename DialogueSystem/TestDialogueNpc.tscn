@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://brdfquwtwre35"]
+
+[ext_resource type="PackedScene" uid="uid://cd6wc3r3lqw5e" path="res://InteractionSystem/InteractableArea.tscn" id="1_oyqkc"]
+[ext_resource type="PackedScene" uid="uid://clpbr17usfnw3" path="res://DialogueSystem/StartDialogue.tscn" id="2_o4pi5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gw7t1"]
+albedo_color = Color(0.119649, 0.2723, 0.731835, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0u7uw"]
+material = SubResource("StandardMaterial3D_gw7t1")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hwoag"]
+
+[node name="TestDialogueNPC" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0u7uw")
+
+[node name="InteractableArea" parent="." instance=ExtResource("1_oyqkc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+shape = SubResource("CapsuleShape3D_hwoag")
+
+[node name="StartDialogue" parent="InteractableArea" instance=ExtResource("2_o4pi5")]

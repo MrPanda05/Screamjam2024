@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://Commons/Managers/CursorManager.cs" id="1_goo6p"]
 
 [node name="CursorManager" type="Node" groups=["CursorManager"]]
+process_mode = 3
 script = ExtResource("1_goo6p")
