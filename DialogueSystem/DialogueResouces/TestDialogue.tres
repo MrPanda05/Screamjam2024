@@ -10,4 +10,8 @@ Pages = Array[Dictionary]([{
 }, {
 "Bob": "You need to go fishing",
 "You": "Ok!"
+}, {
+"Bob": "Try to get some tilapia"
+}, {
+"Bob": "Later "
 }])

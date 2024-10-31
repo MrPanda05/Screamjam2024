@@ -63,34 +63,66 @@ namespace DialogueSystem
         }
         public void PrintCurrentDialogue()
         {
-            if (_currentPage > _currentDialogue.Pages.Count) return;
+            if (_currentPage > _currentDialogue.Pages.Count - 1) return;
             GD.Print($"Char named {_currentKey} said :{_currentDialogue.Pages[_currentPage][_currentKey]}");
         }
+        public void DebugPrint()
+        {
+            GD.Print("==================");
+            GD.Print($"Current page: {_currentPage}");
+            GD.Print($"Page count: {_currentDialogue.Pages.Count - 1}");
+            _keyList.ForEach(Item => GD.Print($"Key list page: {Item}"));
+            GD.Print($"Current key: {_currentKey}");
+            GD.Print($"Current key index: {_keyIndex}");
+            GD.Print($"Current key count: {_keyList.Count}");
+            GD.Print("==================");
+
+        }
+        //key count = 1 => keyindex == 0
+        //key count = 2 => keyindex == 0 ou 1
+        //O npc fala e nao tem resposta do player no mesmo dicionario
+        //
+
         private void UpdateKeys()
         {
-            if (_currentPage > _currentDialogue.Pages.Count) return;
+            if (_currentPage > _currentDialogue.Pages.Count - 1) return;
+            _keyIndex = 0;
             Godot.Collections.Dictionary<string, string> item = _currentDialogue.Pages[_currentPage];
             _keyList = item.Keys.ToList();
             _currentKey = _keyList[_keyIndex];
         }
-        public void NextDialogue()//Same page, used for when the player has a responde...
+        private void ChangePageOrDialogue()
         {
-            if (_currentPage > _currentDialogue.Pages.Count) return;
+            if (_currentPage > _currentDialogue.Pages.Count - 1) return;
             _keyIndex++;
-        }
-        public void NextPage()
-        {
-            if (_currentPage > _currentDialogue.Pages.Count) return;
-            _currentPage++;
-            UpdateKeys();
-        }
+            if ((_keyList.Count == 1 && _keyIndex != 0) || (_keyList.Count == 2 && _keyIndex > 1))
+            {
+                _currentPage++;
+                UpdateKeys();
+                GD.Print("cHANGE PAGE");
+            }
+            else
+            {
+                _currentKey = _keyList[_keyIndex];
+                GD.Print("Next index");
 
+            }
+        }
+        private void NextDialogue()
+        {
+            ChangePageOrDialogue();
+            DebugPrint();
+        }
+        
         public void StartDialogue(DialogueResource dialogue)
         {
             _currentDialogue = dialogue;
             _currentPage = 0;
             _keyIndex = 0;
-            UpdateKeys();
+            Godot.Collections.Dictionary<string, string> item = _currentDialogue.Pages[_currentPage];
+            _keyList = item.Keys.ToList();
+            _currentKey = _keyList[_keyIndex];
+            DebugPrint();
             PrintCurrentDialogue();
         }
         /*
@@ -111,12 +143,7 @@ namespace DialogueSystem
             if (@event is not InputEventKey eventKey) return;
             if (eventKey.Pressed && !eventKey.IsEcho() && eventKey.Keycode == Key.P)
             {
-                _keyIndex++;
-                if(_keyIndex < _keyList.Count)
-                {
-                    _keyIndex = 0;
-                    NextPage();
-                }
+                NextDialogue();
                 PrintCurrentDialogue();
             }
         }
