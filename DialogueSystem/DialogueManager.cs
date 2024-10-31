@@ -3,6 +3,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Ui;
 
 namespace DialogueSystem
 {
@@ -16,11 +17,20 @@ namespace DialogueSystem
     {
         public static DialogueManager Instance { get; private set; }
 
+        public DialogueState CurrentState { get; private set; }
+
         private int _currentPage;
         private List<string> _keyList;
         private string _currentKey;
         private DialogueResource _currentDialogue;
         private int _keyIndex;
+
+        private GameUi _gameUi;
+        private DialogueBox _dialogueBox;
+
+        public static Action<int> OnDialogueChanged;
+        public static Action<int> OnDialogueStoped;
+
 
         public override void _Ready()
         {
@@ -31,25 +41,25 @@ namespace DialogueSystem
             }
             Instance = this;
         }
-        
-        //foreach (var item in MyDialogue.Pages)
-         //{
-         //    var keys = item.Keys;
-         //    foreach (var Lekey in keys)
-         //    {
-         //        GD.Print($"{Lekey}: {item[Lekey]}");
-         //    }
-         //}
-         //for (int i = 0; i < MyDialogue.Pages.Count; i++)
-         //{
-         //    Godot.Collections.Dictionary<string, string> item = MyDialogue.Pages[i];
-         //    var keys = item.Keys;
-         //    foreach (var Lekey in keys)
-         //    {
-         //        GD.Print($"{Lekey}: {item[Lekey]}");
-         //    }
-         //}
 
+        //foreach (var item in MyDialogue.Pages)
+        //{
+        //    var keys = item.Keys;
+        //    foreach (var Lekey in keys)
+        //    {
+        //        GD.Print($"{Lekey}: {item[Lekey]}");
+        //    }
+        //}
+        //for (int i = 0; i < MyDialogue.Pages.Count; i++)
+        //{
+        //    Godot.Collections.Dictionary<string, string> item = MyDialogue.Pages[i];
+        //    var keys = item.Keys;
+        //    foreach (var Lekey in keys)
+        //    {
+        //        GD.Print($"{Lekey}: {item[Lekey]}");
+        //    }
+        //}
+        #region DebugDialogue
         public void PrintAllDialogue(DialogueResource dialogueResource)
         {
             foreach (var item in dialogueResource.Pages)
@@ -78,10 +88,7 @@ namespace DialogueSystem
             GD.Print("==================");
 
         }
-        //key count = 1 => keyindex == 0
-        //key count = 2 => keyindex == 0 ou 1
-        //O npc fala e nao tem resposta do player no mesmo dicionario
-        //
+        #endregion
 
         private void UpdateKeys()
         {
@@ -91,21 +98,32 @@ namespace DialogueSystem
             _keyList = item.Keys.ToList();
             _currentKey = _keyList[_keyIndex];
         }
+        private void ChangePage()
+        {
+            _currentPage++;
+            UpdateKeys();
+            GD.Print("cHANGE PAGE");
+        }
         private void ChangePageOrDialogue()
         {
-            if (_currentPage > _currentDialogue.Pages.Count - 1) return;
+            if (_currentPage == _currentDialogue.Pages.Count - 1)
+            {
+                CurrentState = DialogueState.FREE;
+                StopDialogue();
+                OnDialogueStoped?.Invoke(_currentDialogue.MyId);
+                return;
+            }
             _keyIndex++;
             if ((_keyList.Count == 1 && _keyIndex != 0) || (_keyList.Count == 2 && _keyIndex > 1))
             {
-                _currentPage++;
-                UpdateKeys();
-                GD.Print("cHANGE PAGE");
+                ChangePage();
+                OnDialogueChanged?.Invoke(_currentDialogue.MyId);
             }
             else
             {
                 _currentKey = _keyList[_keyIndex];
                 GD.Print("Next index");
-
+                OnDialogueChanged?.Invoke(_currentDialogue.MyId);
             }
         }
         private void NextDialogue()
@@ -113,38 +131,57 @@ namespace DialogueSystem
             ChangePageOrDialogue();
             DebugPrint();
         }
-        
+        public void ShowCurrentDialogue()
+        {
+            if (CurrentState != DialogueState.USING) return;
+            if (_currentPage > _currentDialogue.Pages.Count - 1) return;
+            _gameUi.SetVisibilityDialogueBox(true);
+            _dialogueBox.UpdateDialogue(_currentDialogue.Pages[_currentPage][_currentKey], _currentKey);
+        }
+        public void StopDialogue()
+        {
+            GD.Print("End");
+            _gameUi.SetVisibilityDialogueBox(false);
+            _dialogueBox.UpdateDialogue("", "");
+
+        }
+
         public void StartDialogue(DialogueResource dialogue)
         {
+            if (CurrentState == DialogueState.OTHER) return;
+            if(_dialogueBox == null)
+            {
+                _gameUi = GetTree().GetFirstNodeInGroup("GameUI") as GameUi;
+                _dialogueBox = _gameUi.DialogueBoxNode;
+            }
+            //Add check to see if is already in use
+            //Override the dialogue
+            CurrentState = DialogueState.USING;
             _currentDialogue = dialogue;
             _currentPage = 0;
             _keyIndex = 0;
             Godot.Collections.Dictionary<string, string> item = _currentDialogue.Pages[_currentPage];
             _keyList = item.Keys.ToList();
             _currentKey = _keyList[_keyIndex];
-            DebugPrint();
-            PrintCurrentDialogue();
+            //DebugPrint();
+            //PrintCurrentDialogue();
+            ShowCurrentDialogue();
         }
-        /*
-         Set current dialogue
-         set current page
-        Grab the list of they keys available
-        Get the first key of the key of list
-        print the first dialogue that being from the first page, the first key
-        if press p
-            increment the keyindex
-        if(keyindex is greater than the numbers of keys)
-            reset the key back to 0
-            change next page and
+        public void ForceStopCurrentDialogue()
+        {
+            //stops current dialogue
+        }
 
-         */
+
         public override void _UnhandledInput(InputEvent @event)
         {
+            if (CurrentState != DialogueState.USING) return;
             if (@event is not InputEventKey eventKey) return;
             if (eventKey.Pressed && !eventKey.IsEcho() && eventKey.Keycode == Key.P)
             {
                 NextDialogue();
-                PrintCurrentDialogue();
+                //PrintCurrentDialogue();
+                ShowCurrentDialogue();
             }
         }
     }

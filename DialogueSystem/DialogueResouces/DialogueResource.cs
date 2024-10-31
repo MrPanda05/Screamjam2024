@@ -13,9 +13,12 @@ namespace DialogueSystem.DiaResource
     {
         [Export]
         public Godot.Collections.Array<Godot.Collections.Dictionary<string, string>> Pages { get; set; }//This is absolutly retarded
+
+        public int MyId { get; private set; }
         public DialogueResource() 
         {
-            
+            var rng = new RandomNumberGenerator();
+            MyId = (int)rng.Randi();
         }
     }
 }

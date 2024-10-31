@@ -47,6 +47,7 @@ GameManager=""
 CursorManager=""
 CONSTANTS=""
 FishingManager=""
+GameUI=""
 
 [input]
 
