@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://boeq4m5aq3loi"]
+
+[ext_resource type="PackedScene" uid="uid://d20071nhwvxgu" path="res://Models/ModelsFBX/tv.fbx" id="1_dl5rv"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bkslvs1ulsse" path="res://Models/Tv.occ" id="2_5siqj"]
+
+[node name="tv" instance=ExtResource("1_dl5rv")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+occluder = ExtResource("2_5siqj")

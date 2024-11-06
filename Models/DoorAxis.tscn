@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvi7butla10rf"]
+
+[ext_resource type="PackedScene" uid="uid://mecu2sac5vye" path="res://Models/Door.tscn" id="1_nf55x"]
+[ext_resource type="Script" path="res://Models/DoorAxis.cs" id="1_t1kb3"]
+[ext_resource type="PackedScene" uid="uid://cd6wc3r3lqw5e" path="res://InteractionSystem/InteractableArea.tscn" id="2_gmr2r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6b644"]
+size = Vector3(0.45459, 3.79639, 2.16852)
+
+[node name="DoorAxis" type="Node3D"]
+
+[node name="door" parent="." instance=ExtResource("1_nf55x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.02558)
+
+[node name="InteractableArea" parent="door" instance=ExtResource("2_gmr2r")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.02558)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="door/InteractableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0148926, 0.00170898, 1.05496)
+shape = SubResource("BoxShape3D_6b644")
+
+[node name="DoorInteractor" type="Node3D" parent="door/InteractableArea" node_paths=PackedStringArray("_anim", "_timer")]
+script = ExtResource("1_t1kb3")
+_anim = NodePath("../../../AnimationPlayer")
+_timer = NodePath("../../../Timer")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

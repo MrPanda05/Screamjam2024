@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2ncax4ejxd2o"]
+
+[ext_resource type="PackedScene" uid="uid://w2toi3xxoh6g" path="res://Models/ModelsFBX/laptop.fbx" id="1_lnb8c"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_8smqx"]
+size = Vector3(1.22235, 1.0719, 1.63596)
+
+[node name="laptop" instance=ExtResource("1_lnb8c")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.141236, 0.220859, 0.0524237)
+occluder = SubResource("BoxOccluder3D_8smqx")

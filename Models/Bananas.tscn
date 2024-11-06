@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6yux2ivl16f"]
+
+[ext_resource type="PackedScene" uid="uid://chf6i0x4ptecr" path="res://Models/ModelsFBX/bananas.fbx" id="1_ouuuu"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_701em"]
+size = Vector3(1.60733, 1, 2.92544)
+
+[node name="bananas" instance=ExtResource("1_ouuuu")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.126857, 0, -0.402961)
+occluder = SubResource("BoxOccluder3D_701em")

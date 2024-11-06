@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://6fdx8lvkgk6l"]
+
+[ext_resource type="PackedScene" uid="uid://b7rfooyobk8ca" path="res://Models/ModelsFBX/kitchentop.fbx" id="1_usc1r"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_8j0qj"]
+size = Vector3(2.49726, 3.56433, 12.9484)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gdjyt"]
+size = Vector3(2.53021, 3.32275, 13.061)
+
+[node name="kitchentop" instance=ExtResource("1_usc1r")]
+
+[node name="Faucet" parent="Kitchen top" index="0"]
+transform = Transform3D(-0.928799, 0.1111, 0.0246249, 0.0472232, -0.104654, 0.278656, 0.199353, 0.542412, 0.0487204, -0.00087173, 0.00217643, 0.00884441)
+
+[node name="Cold" parent="Kitchen top" index="2"]
+transform = Transform3D(0.124542, -0.930337, -0.00390076, 0.0199609, -0.0172474, 0.159575, -0.598161, -0.194279, 0.00451293, 0.0106362, 0.00279197, 0.0107285)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+occluder = SubResource("BoxOccluder3D_8j0qj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00918579, -0.00708008, 0.097168)
+shape = SubResource("BoxShape3D_gdjyt")

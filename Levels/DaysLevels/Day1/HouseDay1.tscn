@@ -1,8 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://buu5avlunxynh"]
+[gd_scene load_steps=19 format=3 uid="uid://buu5avlunxynh"]
 
 [ext_resource type="Script" path="res://Levels/DaysLevels/Day1/HouseDay1.cs" id="1_6o517"]
 [ext_resource type="PackedScene" uid="uid://bqcqx18c4v21u" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.tscn" id="1_gm8kp"]
 [ext_resource type="PackedScene" uid="uid://belqv623htmui" path="res://LePlayer/Player.tscn" id="2_e8m7a"]
+[ext_resource type="PackedScene" uid="uid://brxeldduenks8" path="res://Levels/PlayerBaseHouse.tscn" id="4_202ty"]
+[ext_resource type="PackedScene" uid="uid://bnbt7curro3ej" path="res://Models/Bed.tscn" id="5_74nvo"]
+[ext_resource type="PackedScene" uid="uid://cdgiykd1jetbc" path="res://Models/Cabinet.tscn" id="6_c8hwj"]
+[ext_resource type="PackedScene" uid="uid://ban61xv2dxg0j" path="res://Models/Sunflowerpot.tscn" id="7_ihfyj"]
+[ext_resource type="PackedScene" uid="uid://8sql0jfip8a7" path="res://Models/Toilet.tscn" id="8_my6jv"]
+[ext_resource type="PackedScene" uid="uid://lbgtsoegbsh8" path="res://Models/BasicSofa.tscn" id="9_58odv"]
+[ext_resource type="PackedScene" uid="uid://6fdx8lvkgk6l" path="res://Models/Kitchentop.tscn" id="10_4etgi"]
+[ext_resource type="PackedScene" uid="uid://c84tfsts1vklk" path="res://Models/Stove.tscn" id="11_evacu"]
+[ext_resource type="PackedScene" uid="uid://dc0n555tqx3h5" path="res://Models/Table1.tscn" id="12_3xxv4"]
+[ext_resource type="PackedScene" uid="uid://bqjmafaqnl2e8" path="res://Models/Chair1.tscn" id="13_1uwjb"]
+[ext_resource type="PackedScene" uid="uid://mecu2sac5vye" path="res://Models/Door.tscn" id="14_fmsaw"]
+[ext_resource type="PackedScene" uid="uid://qm2vfivcif70" path="res://DialogueSystem/InnerMologueArea.tscn" id="15_r8xxa"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8xg1n"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,13 +29,10 @@ sky = SubResource("Sky_01v0f")
 tonemap_mode = 2
 glow_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_cfmgk"]
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_actqx"]
-points = PackedVector3Array(1.01587, 0.015873, 1.01587, -1.01587, -0.015873, -1.01587, -1.01587, 0.015873, -1.01587, 1.01587, -0.015873, -1.01587, -1.01587, -0.015873, 1.01587, -1.01587, 0.015873, 1.01587, 1.01587, 0.015873, -1.01587, 1.01587, -0.015873, 1.01587)
-
-[node name="HouseDay1" type="Node3D"]
+[node name="HouseDay1" type="Node3D" node_paths=PackedStringArray("Spawnpoint")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.02192, 0, -1.30525)
 script = ExtResource("1_6o517")
+Spawnpoint = NodePath("SpawnPoint")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -32,24 +41,82 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ksip5")
 
-[node name="Ground" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.57193, 0, 0, 0, 4.57193, 0, 0, 0, 4.57193, 0, 0, 0)
-mesh = SubResource("PlaneMesh_cfmgk")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
-collision_layer = 12
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_actqx")
-
 [node name="TriggerChangeScene" parent="." instance=ExtResource("1_gm8kp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.41002, 0.431733, -0.89812)
+transform = Transform3D(1, 0, 0, 0, 3.60046, 0, 0, 0, 2.0651, -17.0734, -2.58895, -7.77658)
+
+[node name="InteractableArea" parent="TriggerChangeScene" index="0"]
+visible = false
 
 [node name="TriggerScenChange" parent="TriggerChangeScene/InteractableArea" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00139046, 0.00019455, 0.0117059)
 path = "res://Levels/DaysLevels/Day1/FestivalDay1.tscn"
 
 [node name="Player" parent="." instance=ExtResource("2_e8m7a")]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0.942393, 2.06639, -1.1142)
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 6.07038, 6.71584, -3.9743)
+
+[node name="PlayerBaseHouse" parent="." instance=ExtResource("4_202ty")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 1.5563, 1.20239, -3.31376)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="bed" parent="Objects" instance=ExtResource("5_74nvo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86731, 0.943311, 0)
+
+[node name="cabinet" parent="Objects" instance=ExtResource("6_c8hwj")]
+transform = Transform3D(0.37291, 0, 0, 0, 0.37291, 0, 0, 0, 0.37291, -1.16683, 1.0136, -3.27053)
+
+[node name="Sunflowerpot" parent="Objects" instance=ExtResource("7_ihfyj")]
+transform = Transform3D(-6.0243e-09, 0, -0.13782, 0, 0.13782, 0, 0.13782, 0, -6.0243e-09, -1.20091, 1.81488, -2.65255)
+
+[node name="toilet" parent="Objects" instance=ExtResource("8_my6jv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.74526, 0.557951, 17.6102)
+
+[node name="cabinet2" parent="Objects" instance=ExtResource("6_c8hwj")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -16.5582, 1.02644, 5.92218)
+
+[node name="cabinet3" parent="Objects" instance=ExtResource("6_c8hwj")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -16.5582, 1.02644, 2.9339)
+
+[node name="BasicSofa" parent="Objects" instance=ExtResource("9_58odv")]
+transform = Transform3D(-1.71571, 0, 1.49992e-07, 0, 1.71571, 0, -1.49992e-07, 0, -1.71571, -3.82337, 0.536133, -2.39044)
+
+[node name="kitchentop" parent="Objects" instance=ExtResource("10_4etgi")]
+transform = Transform3D(-2.25735e-08, 0, -0.516421, 0, 0.516421, 0, 0.516421, 0, -2.25735e-08, -6.4332, 1.10259, 18.3001)
+
+[node name="stove" parent="Objects" instance=ExtResource("11_evacu")]
+transform = Transform3D(-1.84161e-08, 0, 0.42131, 0, 0.42131, 0, -0.42131, 0, -1.84161e-08, -10.7154, 1.07441, 18.2261)
+
+[node name="table1" parent="Objects" instance=ExtResource("12_3xxv4")]
+transform = Transform3D(-2.87149e-08, 0, 0.65692, 0, 0.65692, 0, -0.65692, 0, -2.87149e-08, -5.85422, 1.9239, 5.7929)
+
+[node name="chair1" parent="Objects" instance=ExtResource("13_1uwjb")]
+transform = Transform3D(-6.58749e-08, 0, -1.50704, 0, 1.50704, 0, 1.50704, 0, -6.58749e-08, -6.74498, 0.942955, 5.16813)
+
+[node name="chair4" parent="Objects" instance=ExtResource("13_1uwjb")]
+transform = Transform3D(1.99241e-07, 0, 1.51937, 0, 1.51937, 0, -1.51937, 0, 1.99241e-07, -4.08367, 0.942955, 7.21537)
+
+[node name="chair3" parent="Objects" instance=ExtResource("13_1uwjb")]
+transform = Transform3D(0.175227, 0, 1.49682, 0, 1.50704, 0, -1.49682, 0, 0.175227, -4.68911, 0.942955, 5.16813)
+
+[node name="chair2" parent="Objects" instance=ExtResource("13_1uwjb")]
+transform = Transform3D(-0.222399, 0.00218534, -1.49054, 0.00328665, 1.50704, 0.00171912, 1.49054, -0.00299695, -0.222403, -7.05342, 0.942955, 6.77575)
+
+[node name="FrontDoor" parent="." instance=ExtResource("14_fmsaw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.9643, 2.33402, -9.51223)
+
+[node name="Door2" parent="FrontDoor" instance=ExtResource("15_r8xxa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0189686, -0.407422, -0.33726)
+canRepeat = true
+
+[node name="CollisionShape3D" parent="FrontDoor/Door2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.267151, 0, 0.167236)
+
+[node name="StartInnerMonologue" parent="FrontDoor/Door2" index="1"]
+myDialogue = "I should eat something first"
 
 [editable path="TriggerChangeScene"]
+[editable path="PlayerBaseHouse"]
+[editable path="FrontDoor/Door2"]

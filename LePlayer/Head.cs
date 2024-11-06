@@ -13,7 +13,7 @@ namespace LePlayer
             if (raycast.GetCollider() is InteractableArea area)
             {
 
-                if (Input.IsActionJustPressed("InteractButton") && area.CanBeInteractWith)
+                if (Input.IsActionJustPressed("InteractButton") && area.CanBeInteractWith && area.Visible)
                 {
                     area.InvokeInteractions();
                 }

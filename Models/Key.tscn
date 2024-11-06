@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bug1vem3n3ud2"]
+
+[ext_resource type="PackedScene" uid="uid://k35g2ivns6i5" path="res://Models/ModelsFBX/key.fbx" id="1_7rs75"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_crjkn"]
+size = Vector3(0.308531, 0.84309, 1.75329)
+
+[node name="key" instance=ExtResource("1_7rs75")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+occluder = SubResource("BoxOccluder3D_crjkn")

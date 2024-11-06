@@ -10,10 +10,17 @@ namespace DialogueSystem
 		[Export]
 		private Label _whoLabel;
 
+
 		public void UpdateDialogue(string dialogue, string speaker)
 		{
 			_dialogueLabel.Text = dialogue;
 			_whoLabel.Text = speaker;
 		}
+
+		public void UpdateMonologue(string monologue)
+		{
+            _dialogueLabel.Text = monologue;
+            _whoLabel.Text = "You";
+        }
 	}
 }

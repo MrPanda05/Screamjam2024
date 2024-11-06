@@ -24,6 +24,7 @@ namespace DialogueSystem
         private string _currentKey;
         private DialogueResource _currentDialogue;
         private int _keyIndex;
+        private Timer _timerMonologue;
 
         private GameUi _gameUi;
         private DialogueBox _dialogueBox;
@@ -40,8 +41,10 @@ namespace DialogueSystem
                 return;
             }
             Instance = this;
+            _timerMonologue = GetChild<Timer>(0);
         }
 
+        #region DebugDialogue
         //foreach (var item in MyDialogue.Pages)
         //{
         //    var keys = item.Keys;
@@ -59,7 +62,6 @@ namespace DialogueSystem
         //        GD.Print($"{Lekey}: {item[Lekey]}");
         //    }
         //}
-        #region DebugDialogue
         public void PrintAllDialogue(DialogueResource dialogueResource)
         {
             foreach (var item in dialogueResource.Pages)
@@ -80,16 +82,17 @@ namespace DialogueSystem
         {
             GD.Print("==================");
             GD.Print($"Current page: {_currentPage}");
-            GD.Print($"Page count: {_currentDialogue.Pages.Count - 1}");
-            _keyList.ForEach(Item => GD.Print($"Key list page: {Item}"));
+            GD.Print($"Page count: {_currentDialogue?.Pages.Count - 1}");
+            _keyList?.ForEach(Item => GD.Print($"Key list page: {Item}"));
             GD.Print($"Current key: {_currentKey}");
             GD.Print($"Current key index: {_keyIndex}");
-            GD.Print($"Current key count: {_keyList.Count}");
+            GD.Print($"Current key count: {_keyList?.Count}");
             GD.Print("==================");
 
         }
         #endregion
 
+        #region NPC_DialogueSystem
         private void UpdateKeys()
         {
             if (_currentPage > _currentDialogue.Pages.Count - 1) return;
@@ -142,7 +145,12 @@ namespace DialogueSystem
         {
             GD.Print("End");
             _gameUi.SetVisibilityDialogueBox(false);
-            _dialogueBox.UpdateDialogue("", "");
+            _dialogueBox.UpdateDialogue(string.Empty, string.Empty);
+            _currentDialogue = null;
+            _currentPage = 0;
+            _keyIndex = 0;
+            _keyList = null;
+            _currentKey = string.Empty;
 
         }
 
@@ -154,10 +162,12 @@ namespace DialogueSystem
                 _gameUi = GetTree().GetFirstNodeInGroup("GameUI") as GameUi;
                 _dialogueBox = _gameUi.DialogueBoxNode;
             }
+            
             //Add check to see if is already in use
             //Override the dialogue
             CurrentState = DialogueState.USING;
             _currentDialogue = dialogue;
+            GD.Print(_currentDialogue.MyId);
             _currentPage = 0;
             _keyIndex = 0;
             Godot.Collections.Dictionary<string, string> item = _currentDialogue.Pages[_currentPage];
@@ -170,8 +180,32 @@ namespace DialogueSystem
         public void ForceStopCurrentDialogue()
         {
             //stops current dialogue
+            CurrentState = DialogueState.FREE;
+            StopDialogue();
+        }
+        #endregion
+
+        #region InnerMonologue
+        public void StartInnerMonologue(string text)
+        {
+            if(CurrentState == DialogueState.USING) return;
+            if (_dialogueBox == null)
+            {
+                _gameUi = GetTree().GetFirstNodeInGroup("GameUI") as GameUi;
+                _dialogueBox = _gameUi.DialogueBoxNode;
+            }
+            _gameUi.SetVisibilityDialogueBox(true);
+            _dialogueBox.UpdateMonologue(text);
+            _timerMonologue.Start();
+
         }
 
+        public void OnInnerMonologueTimerTimeout()
+        {
+            _gameUi.SetVisibilityDialogueBox(false);
+            _dialogueBox.UpdateDialogue(string.Empty, string.Empty);
+        }
+        #endregion
 
         public override void _UnhandledInput(InputEvent @event)
         {

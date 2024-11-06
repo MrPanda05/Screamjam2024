@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://mecu2sac5vye"]
+
+[ext_resource type="PackedScene" uid="uid://c50ikgolaa5td" path="res://Models/ModelsFBX/door.fbx" id="1_qr7kq"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_a4jkc"]
+size = Vector3(0.385693, 3.67423, 2.13146)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ka0fh"]
+size = Vector3(0.284363, 3.65405, 2.10132)
+
+[node name="door" instance=ExtResource("1_qr7kq")]
+transform = Transform3D(1, 0, 0, 0, 1.28331, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+occluder = SubResource("BoxOccluder3D_a4jkc")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+collision_layer = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0102234, -0.0101318, -0.00524902)
+shape = SubResource("BoxShape3D_ka0fh")

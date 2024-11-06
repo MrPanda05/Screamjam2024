@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1g54taovykji"]
+
+[ext_resource type="PackedScene" uid="uid://t3st2enp00qh" path="res://Models/ModelsFBX/bloon.fbx" id="1_quyqc"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_0svo5"]
+size = Vector3(1, 2, 1)
+
+[node name="bloon" instance=ExtResource("1_quyqc")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+transform = Transform3D(0.455248, 0, 0, 0, 1.02194, 0, 0, 0, 0.455248, 0, -0.655401, 0)
+occluder = SubResource("BoxOccluder3D_0svo5")

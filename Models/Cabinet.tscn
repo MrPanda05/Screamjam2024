@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdgiykd1jetbc"]
+
+[ext_resource type="PackedScene" uid="uid://othjkkk4v5gx" path="res://Models/ModelsFBX/cabinet.fbx" id="1_mqt7f"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_jc5e4"]
+size = Vector3(2.81614, 3.78538, 7.37117)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mlbhy"]
+size = Vector3(2.60748, 3.79077, 7.297)
+
+[node name="cabinet" instance=ExtResource("1_mqt7f")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0438232, 0, -0.0438256)
+occluder = SubResource("BoxOccluder3D_jc5e4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0272522, -0.0245361, 0.0151978)
+shape = SubResource("BoxShape3D_mlbhy")

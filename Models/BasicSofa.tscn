@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://lbgtsoegbsh8"]
+
+[ext_resource type="PackedScene" uid="uid://dhwit7phpxmbn" path="res://Models/ModelsFBX/BasicSofa.fbx" id="1_jtx1q"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_5yprh"]
+size = Vector3(1.57859, 1.02938, 2.85543)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iiwqs"]
+size = Vector3(1.0556, 0.669983, 2.73047)
+
+[node name="BasicSofa" instance=ExtResource("1_jtx1q")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+transform = Transform3D(0.758698, 0, 0, 0, 1, 0, 0, 0, 1, -0.216697, 0.191601, 0)
+occluder = SubResource("BoxOccluder3D_5yprh")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.240631, 0.153961, 0.0361328)
+shape = SubResource("BoxShape3D_iiwqs")

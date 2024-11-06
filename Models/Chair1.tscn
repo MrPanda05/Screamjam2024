@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqjmafaqnl2e8"]
+
+[ext_resource type="PackedScene" uid="uid://degaqrq4ldhwl" path="res://Models/ModelsFBX/chair1.fbx" id="1_ljscd"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_68c3l"]
+size = Vector3(1, 2, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gygay"]
+size = Vector3(1.03516, 0.609314, 1.29172)
+
+[node name="chair1" instance=ExtResource("1_ljscd")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+occluder = SubResource("BoxOccluder3D_68c3l")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23349, 0.145859)
+shape = SubResource("BoxShape3D_gygay")

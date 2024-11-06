@@ -119,6 +119,7 @@ namespace Commons.Managers
         public void InitializeCurrentMainScene(Node3D currentScene)
         {
             SetCurrentActiveScene(currentScene);
+            AddPlayerToScene();
         }
         public void InitializeCurrentMainScene(Node3D currentScene, Node3D playerPos)
         {

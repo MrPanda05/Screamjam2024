@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://8pbqatmstusu"]
+
+[ext_resource type="PackedScene" uid="uid://wp774vpsiq0b" path="res://Models/ModelsFBX/apple.fbx" id="1_a3b8n"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_huam1"]
+
+[node name="apple" instance=ExtResource("1_a3b8n")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+transform = Transform3D(0.469006, 0, 0, 0, 0.469006, 0, 0, 0, 0.469006, 0, 0, 0)
+occluder = SubResource("BoxOccluder3D_huam1")

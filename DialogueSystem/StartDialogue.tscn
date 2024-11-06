@@ -4,5 +4,7 @@
 [ext_resource type="Resource" uid="uid://cs2p8sd8ls2re" path="res://DialogueSystem/DialogueResouces/TestDialogue.tres" id="2_xccj3"]
 
 [node name="StartDialogue" type="Node3D"]
+editor_description = "Start NPC dialogue with player
+"
 script = ExtResource("1_m850d")
 MyDialogue = ExtResource("2_xccj3")

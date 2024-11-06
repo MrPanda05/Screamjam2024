@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://dcd8jpf0ut8lw"
+path="res://.godot/imported/House.map-023805573427cc321ecc02ad462b7609.tres"
+
+[deps]
+
+source_file="res://Levels/QuakeMapsModels/House.map"
+dest_files=["res://.godot/imported/House.map-023805573427cc321ecc02ad462b7609.tres"]
+
+[params]
+

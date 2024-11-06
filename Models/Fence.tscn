@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://01v1kd8hk84v"]
+
+[ext_resource type="PackedScene" uid="uid://bvof085v1kuii" path="res://Models/ModelsFBX/fence.fbx" id="1_2hj23"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_4i451"]
+size = Vector3(0.62929, 2.61865, 2.51715)
+
+[node name="fence" instance=ExtResource("1_2hj23")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.334944, -0.0304494)
+occluder = SubResource("BoxOccluder3D_4i451")

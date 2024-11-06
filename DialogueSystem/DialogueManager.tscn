@@ -4,3 +4,9 @@
 
 [node name="DialogueManager" type="Node"]
 script = ExtResource("1_ifr4j")
+
+[node name="InnerMonologueTimer" type="Timer" parent="."]
+wait_time = 2.7
+one_shot = true
+
+[connection signal="timeout" from="InnerMonologueTimer" to="." method="OnInnerMonologueTimerTimeout"]

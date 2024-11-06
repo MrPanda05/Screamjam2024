@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://jqpuvv5y27ng"]
+
+[ext_resource type="PackedScene" uid="uid://bqu06n5wl2p8c" path="res://Models/ModelsFBX/cupjuice.fbx" id="1_uro3s"]
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_swtjv"]
+size = Vector3(0.462546, 0.626675, 0.462545)
+
+[node name="cupjuice" instance=ExtResource("1_uro3s")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+occluder = SubResource("BoxOccluder3D_swtjv")
