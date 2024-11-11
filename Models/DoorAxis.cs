@@ -5,6 +5,10 @@ using System;
 
 namespace Models
 {
+
+    /// <summary>
+    /// Possible door to make open door animation possible
+    /// </summary>
     public partial class DoorAxis : Node3D, IInteractable
     {
         public InteractableArea Area { get; set; }

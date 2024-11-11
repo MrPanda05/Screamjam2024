@@ -4,6 +4,9 @@ using Commons.FSM;
 
 namespace LePlayer.States
 {
+    /// <summary>
+    /// Player movement related
+    /// </summary>
     public partial class PlayerMovementState : State
     {
         private Player LePlayer;

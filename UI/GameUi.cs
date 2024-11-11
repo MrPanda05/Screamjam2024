@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace Ui
 {
+    /// <summary>
+    /// Holds all the UI componets
+    /// </summary>
 	public partial class GameUi : CanvasLayer
 	{
 

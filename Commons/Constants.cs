@@ -3,12 +3,16 @@ using System;
 
 namespace Commons
 {
+
     public enum GameState
     {
         PLAYING,//used if the player is active playing
         PAUSED,//used if the game is paused by the playing while in the playing state
         OTHER//used if the game is on a tittle screen or
     }
+    /// <summary>
+    /// Game constants
+    /// </summary>
     public partial class Constants : Node
     {
         public static Constants Instance { get; private set; }

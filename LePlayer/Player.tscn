@@ -9,7 +9,8 @@
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_lglip"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4jcex"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mbgc6"]
+radius = 0.243603
 
 [node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("velocityComp", "Head", "Camera", "FSM") groups=["Player"]]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
@@ -21,8 +22,9 @@ Head = NodePath("Head")
 Camera = NodePath("Head/POV")
 FSM = NodePath("FiniteStateMachine")
 
-[node name="Head" type="Node3D" parent="."]
+[node name="Head" type="Node3D" parent="." node_paths=PackedStringArray("_crosshair")]
 script = ExtResource("2_a8x5g")
+_crosshair = NodePath("../CrossHair")
 
 [node name="POV" type="Camera3D" parent="Head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.841568, 0)
@@ -35,11 +37,12 @@ collision_mask = 2
 collide_with_areas = true
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)
 cast_shadow = 0
 mesh = SubResource("CapsuleMesh_lglip")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_4jcex")
+shape = SubResource("CapsuleShape3D_mbgc6")
 
 [node name="VelocityComponent3D" parent="." node_paths=PackedStringArray("myIndividual") instance=ExtResource("3_elduw")]
 Speed = 1600.0

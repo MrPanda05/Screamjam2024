@@ -5,6 +5,9 @@ using System;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Trigger a NPC dialogue
+    /// </summary>
     public partial class StartDialogue : Node3D, IInteractable
     {
         [Export]

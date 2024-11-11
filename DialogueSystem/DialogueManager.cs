@@ -13,6 +13,9 @@ namespace DialogueSystem
         USING,//The player is using the dialogue
         OTHER
     }
+    /// <summary>
+    /// Managers all sorts of dialogues, its fucking retarded
+    /// </summary>
     public partial class DialogueManager : Node
     {
         public static DialogueManager Instance { get; private set; }
@@ -144,6 +147,7 @@ namespace DialogueSystem
         public void StopDialogue()
         {
             GD.Print("End");
+            _currentDialogue.OnDialogueEnd();
             _gameUi.SetVisibilityDialogueBox(false);
             _dialogueBox.UpdateDialogue(string.Empty, string.Empty);
             _currentDialogue = null;

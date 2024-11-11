@@ -111,7 +111,10 @@ namespace Commons.Managers
         private void SetPlayerRotation(Node3D nodeRotation)
         {
             Player player = GetTree().GetFirstNodeInGroup("Player") as Player;
-            player.GlobalPosition = nodeRotation.GlobalRotation;
+            //Todo fix this
+            //player.Camera.GlobalRotation = nodeRotation.GlobalRotation;
+            //player.GlobalRotation = nodeRotation.GlobalRotation;
+
         }
         #endregion
 
@@ -126,6 +129,7 @@ namespace Commons.Managers
             SetCurrentActiveScene(currentScene);
             AddPlayerToScene();
             SetPlayerPosition(playerPos);
+            SetPlayerRotation(playerPos);
         }
         public void InitializeCurrentMainScene(Node3D currentScene, Vector3 playerPos)
         {

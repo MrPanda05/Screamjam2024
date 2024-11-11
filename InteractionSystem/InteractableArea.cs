@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace InteractSystem
 {
+    /// <summary>
+    /// Used for things interactable by the player with the E key, uses IInteractable and NOT IEndInteractable
+    /// </summary>
     public partial class InteractableArea : Area3D
     {
         [Export]
@@ -30,7 +33,7 @@ namespace InteractSystem
         }
         public void UpdateInteraction()
         {
-            CanBeInteractWith = !(!canRepeat && hasBeenUsed);
+            CanBeInteractWith = canRepeat || !hasBeenUsed;
             if (!CanBeInteractWith)
             {
                 DisableSelf();

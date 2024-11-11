@@ -4,6 +4,10 @@ using System;
 
 namespace Commons.Components
 {
+    /// <summary>
+    /// A stupid velocity component for 3D nodes
+    /// Its stupid because its just a copy paste from a 2D version and I didn't bother to fix the values
+    /// </summary>
     public partial class VelocityComponent3D : Node
     {
         [ExportGroup("Propreties")]

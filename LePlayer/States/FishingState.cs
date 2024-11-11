@@ -5,6 +5,9 @@ using FishingMiniGame;
 
 namespace LePlayer.States
 {
+    /// <summary>
+    /// Player fishing related controls
+    /// </summary>
     public partial class FishingState : State
     {
         private Player LePlayer;

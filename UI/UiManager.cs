@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace Ui
 {
+    /// <summary>
+    /// Instantiate gameui canvaslayer so it is born first
+    /// </summary>
     public partial class UiManager : Node
     {
         public static UiManager Instance { get; private set; }

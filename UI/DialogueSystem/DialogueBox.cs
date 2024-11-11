@@ -3,6 +3,10 @@ using System;
 
 namespace DialogueSystem
 {
+
+	/// <summary>
+	/// Has all the dialogue boxes used for the dialogue system
+	/// </summary>
 	public partial class DialogueBox : Control
 	{
 		[Export]

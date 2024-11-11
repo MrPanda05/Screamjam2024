@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ksghcsgtxlte"]
+
+[ext_resource type="Script" path="res://Commons/DisableAnyObject.cs" id="1_uyhx3"]
+
+[node name="DisableAnyObject" type="Node3D"]
+script = ExtResource("1_uyhx3")
+_processMode = 4

@@ -6,7 +6,9 @@ using Commons.FSM;
 
 namespace LePlayer
 {
-
+    /// <summary>
+    /// Holds things important to the player and how to move him
+    /// </summary>
     public partial class Player : CharacterBody3D
     {
         [Export]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cva2x3jsb5v41"]
+
+[ext_resource type="Script" path="res://Commons/CallEventBusById.cs" id="1_2jjo8"]
+
+[node name="CallEventBusById" type="Node3D"]
+editor_description = "DON'T USE"
+script = ExtResource("1_2jjo8")

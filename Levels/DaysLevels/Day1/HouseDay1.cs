@@ -5,6 +5,9 @@ using System;
 
 namespace Levels.Days
 {
+    /// <summary>
+    /// Initialize day 1
+    /// </summary>
     public partial class HouseDay1 : Node3D
     {
         [Export]

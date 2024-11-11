@@ -4,6 +4,10 @@ using System;
 
 namespace DialogueSystem
 {
+    /// <summary>
+    /// Trigger a simple one message inner monologue
+    /// used for giving player hints or simple story related
+    /// </summary>
     public partial class StartInnerMonologue : Node3D, IInteractable
     {
         public InteractableArea Area { get; set; }

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cbp50o74r160q"]
+[gd_scene load_steps=12 format=3 uid="uid://cbp50o74r160q"]
 
 [ext_resource type="PackedScene" uid="uid://dg451yda12u8a" path="res://Levels/FestivalBase.tscn" id="1_nlwmn"]
 [ext_resource type="Script" path="res://Levels/DaysLevels/Day1/FestivalDay1.cs" id="1_qvfxh"]
 [ext_resource type="PackedScene" uid="uid://bqcqx18c4v21u" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.tscn" id="3_lo5m2"]
+[ext_resource type="PackedScene" uid="uid://belqv623htmui" path="res://LePlayer/Player.tscn" id="4_3dqmy"]
+[ext_resource type="PackedScene" uid="uid://brdfquwtwre35" path="res://DialogueSystem/TestDialogueNpc.tscn" id="5_e1kcn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nkjnu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,8 +19,15 @@ sky = SubResource("Sky_d6ydn")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="FestivalDay1" type="Node3D"]
+[sub_resource type="PrismMesh" id="PrismMesh_nicf5"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_m402i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_53r4p"]
+
+[node name="FestivalDay1" type="Node3D" node_paths=PackedStringArray("_spawnpoint")]
 script = ExtResource("1_qvfxh")
+_spawnpoint = NodePath("SpawnPoint")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -29,10 +38,64 @@ environment = SubResource("Environment_jayuk")
 
 [node name="FestivalBase" parent="." instance=ExtResource("1_nlwmn")]
 
-[node name="TriggerChangeScene" parent="." instance=ExtResource("3_lo5m2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42188, 0.928057, 33.1597)
+[node name="TriggerGoFishing" parent="." instance=ExtResource("3_lo5m2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42188, 0.928057, -39.4775)
 
-[node name="TriggerScenChange" parent="TriggerChangeScene/InteractableArea" index="1"]
+[node name="TriggerScenChange" parent="TriggerGoFishing/InteractableArea" index="1"]
 path = "res://Levels/FishingSpot.tscn"
 
-[editable path="TriggerChangeScene"]
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(-0.996138, 0, -0.087799, 0, 1, 0, 0.087799, 0, -0.996138, -5.05668, 3.24365, -36.2887)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpawnPoint"]
+transform = Transform3D(0.499398, 0, 0, 0, -2.18294e-08, 0.948542, 0, -0.499398, -4.14621e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_nicf5")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Tents" type="Node3D" parent="Objects"]
+
+[node name="TentPlaceHolder" type="MeshInstance3D" parent="Objects/Tents"]
+transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, 5.88483, 0.868001, -6.51541)
+mesh = SubResource("BoxMesh_m402i")
+
+[node name="TentPlaceHolder2" type="MeshInstance3D" parent="Objects/Tents"]
+transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, 5.88483, 0.868001, 9.8799)
+mesh = SubResource("BoxMesh_m402i")
+
+[node name="TentPlaceHolder3" type="MeshInstance3D" parent="Objects/Tents"]
+transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, 5.88483, 0.868001, 28.4607)
+mesh = SubResource("BoxMesh_m402i")
+
+[node name="TentPlaceHolder4" type="MeshInstance3D" parent="Objects/Tents"]
+transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, -14.7672, 0.868001, 28.4607)
+mesh = SubResource("BoxMesh_m402i")
+
+[node name="TentPlaceHolder5" type="MeshInstance3D" parent="Objects/Tents"]
+transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, -14.7672, 0.868001, 8.44956)
+mesh = SubResource("BoxMesh_m402i")
+
+[node name="TentPlaceHolder6" type="MeshInstance3D" parent="Objects/Tents"]
+transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, -14.7672, 0.868001, -5.09034)
+mesh = SubResource("BoxMesh_m402i")
+
+[node name="TentPlaceHolder7" type="MeshInstance3D" parent="Objects/Tents"]
+transform = Transform3D(-1.10123e-07, 0, 9.63263, 0, 2.14076, 0, -2.51933, 0, -4.21056e-07, -4.97982, 0.868001, 30.5061)
+mesh = SubResource("BoxMesh_m402i")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Tents/TentPlaceHolder7"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Tents/TentPlaceHolder7/StaticBody3D"]
+shape = SubResource("BoxShape3D_53r4p")
+
+[node name="Player" parent="." instance=ExtResource("4_3dqmy")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -5.54246, 5.7968, -31.018)
+
+[node name="NPCS" type="Node3D" parent="."]
+
+[node name="TestDialogueNPC" parent="." instance=ExtResource("5_e1kcn")]
+transform = Transform3D(1.28308, 0, 0, 0, 1.28308, 0, 0, 0, 1.28308, -4.84129, 2.12454, 32.5067)
+
+[editable path="TriggerGoFishing"]
+[editable path="TestDialogueNPC"]

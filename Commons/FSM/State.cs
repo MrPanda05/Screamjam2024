@@ -3,6 +3,9 @@ using System;
 
 namespace Commons.FSM
 {
+    /// <summary>
+    /// Base state node
+    /// </summary>
     public partial class State : Node
     {
         public FiniteStateMachine FSM;
