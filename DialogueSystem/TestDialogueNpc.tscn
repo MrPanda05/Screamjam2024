@@ -18,16 +18,16 @@ material = SubResource("StandardMaterial3D_gw7t1")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_0u7uw")
 
-[node name="InteractableArea" parent="." instance=ExtResource("1_oyqkc")]
+[node name="NpcDialogue" parent="." instance=ExtResource("1_oyqkc")]
 canRepeat = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcDialogue"]
 shape = SubResource("CapsuleShape3D_hwoag")
 
-[node name="StartDialogue" parent="InteractableArea" instance=ExtResource("2_o4pi5")]
+[node name="StartDialogue" parent="NpcDialogue" instance=ExtResource("2_o4pi5")]
 
-[node name="EndDialogue" parent="InteractableArea/StartDialogue" instance=ExtResource("3_3yl5v")]
+[node name="EndDialogue" parent="NpcDialogue/StartDialogue" instance=ExtResource("3_3yl5v")]
 
-[node name="TestEndDialogueInteraction" type="Node3D" parent="InteractableArea/StartDialogue/EndDialogue"]
+[node name="TestEndDialogueInteraction" type="Node3D" parent="NpcDialogue/StartDialogue/EndDialogue"]
 script = ExtResource("4_klcl6")
 CanRepeat = true

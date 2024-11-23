@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://n2nhftkscw5k"]
+
+[ext_resource type="PackedScene" uid="uid://bnhmug7jwvbsi" path="res://Models/ModelsFBX/trashbin.fbx" id="1_vwugg"]
+
+[node name="trashbin" instance=ExtResource("1_vwugg")]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4r1rjyuxkcov"]
+[gd_scene load_steps=10 format=3 uid="uid://b4r1rjyuxkcov"]
 
 [ext_resource type="Script" path="res://Levels/FishingSpot.cs" id="1_c2aqx"]
 [ext_resource type="PackedScene" uid="uid://blw6y7ebsju6s" path="res://FishingMiniGame/EnterFishingInteractable.tscn" id="2_w86cs"]
+[ext_resource type="PackedScene" uid="uid://bqcqx18c4v21u" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.tscn" id="3_mag4q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_a4fbv"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -52,3 +53,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.852407, 0.999999, -7.05343
 
 [node name="Spawnposition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.30483, 6.56046)
+
+[node name="TriggerChangeScene" parent="." instance=ExtResource("3_mag4q")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.354027, 9)

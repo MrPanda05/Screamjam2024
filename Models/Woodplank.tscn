@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://b742b3pvl7uyw"]
+
+[ext_resource type="PackedScene" uid="uid://o2ja6502fkny" path="res://Models/ModelsFBX/woodplank.fbx" id="1_l038c"]
+
+[node name="woodplank" instance=ExtResource("1_l038c")]

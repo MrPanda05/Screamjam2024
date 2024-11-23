@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://y53tnpgp02tr"]
+
+[ext_resource type="PackedScene" uid="uid://cd6wc3r3lqw5e" path="res://InteractionSystem/InteractableArea.tscn" id="1_ocqgb"]
+[ext_resource type="PackedScene" uid="uid://clpbr17usfnw3" path="res://DialogueSystem/StartDialogue.tscn" id="2_ig5ip"]
+[ext_resource type="PackedScene" uid="uid://c1k5ucbfyj4ex" path="res://DialogueSystem/EndDialogue.tscn" id="3_tsyqy"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nuyuv"]
+radius = 0.575716
+
+[node name="InteractableArea" instance=ExtResource("1_ocqgb")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CapsuleShape3D_nuyuv")
+
+[node name="StartDialogue" parent="." index="1" instance=ExtResource("2_ig5ip")]
+MyDialogue = null
+
+[node name="EndDialogue" parent="StartDialogue" index="0" instance=ExtResource("3_tsyqy")]

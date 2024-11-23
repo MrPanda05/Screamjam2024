@@ -1,5 +1,7 @@
 using Godot;
 using System;
+using LePlayer;
+using Commons;
 
 namespace FishingMiniGame
 {
@@ -18,6 +20,8 @@ namespace FishingMiniGame
 
         private Timer timerToFishApear;
         private Timer timerToFishEscape;
+
+        public Action OnPlayerStopFishing;
 
         public void InverteIfIsFishing()
         {
@@ -68,6 +72,17 @@ namespace FishingMiniGame
                 return;
             }
 
+
+        }
+        public void StopPlayerFishing()
+        {
+            ExitFishingMode();
+            forcedToStop = true;
+            ForceStopTimer(timerToFishApear);
+            ForceStopTimer(timerToFishEscape);
+            var player = (Player)GetTree().GetFirstNodeInGroup("Player");
+            player.FSM.TransitioToState(Constants.PLAYER_MOVEMENT_STATE);
+            OnPlayerStopFishing?.Invoke();
 
         }
         public void SelectFishingAction()

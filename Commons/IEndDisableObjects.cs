@@ -4,13 +4,11 @@ using System;
 
 namespace Commons
 {
-    /// <summary>
-    /// Can disable or turn invisible any node3D
-    /// </summary>
-    public partial class DisableAnyObject : Node3D, IInteractable
+    public partial class IEndDisableObjects : Node3D, IEndInteractions
     {
-        public InteractableArea Area { get; set; }
-        public Action OnInteraction { get; set; }
+        public Action<int> OnInteraction { get; set; }
+        public bool CanRepeat { get; set; } = false;
+        public bool HasBeenUsed { get; set; }
 
         [Export]
         private Node3D _myObject;
@@ -20,11 +18,12 @@ namespace Commons
 
         [Export]
         private ProcessModeEnum _processMode;
+
         public void Interaction()
         {
             _myObject.Visible = _visibility;
             _myObject.ProcessMode = _processMode;
+            HasBeenUsed = true;
         }
-        
     }
 }

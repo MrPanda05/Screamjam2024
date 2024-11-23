@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://6tbh28prvdqk"]
+
+[ext_resource type="PackedScene" uid="uid://d4dm0v411b6wx" path="res://Models/ModelsFBX/Refrigirator.fbx" id="1_dmpsc"]
+[ext_resource type="Texture2D" uid="uid://lnpo0t4matii" path="res://Models/ModelsFBX/RefrigeratorLayout.png" id="2_6u1jd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i2ywt"]
+albedo_texture = ExtResource("2_6u1jd")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vyn5a"]
+size = Vector3(1.69263, 5.09058, 2.04797)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_w5msc"]
+size = Vector3(1.70518, 5.07924, 2.08449)
+
+[node name="Refrigirator" instance=ExtResource("1_dmpsc")]
+
+[node name="Refrigerator" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_i2ywt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.100708, 0.00012207, 0.00592041)
+shape = SubResource("BoxShape3D_vyn5a")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11047, 0, 0)
+occluder = SubResource("BoxOccluder3D_w5msc")

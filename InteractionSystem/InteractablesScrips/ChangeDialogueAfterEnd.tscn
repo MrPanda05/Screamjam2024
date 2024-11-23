@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dw84hbd3x6ej7"]
+
+[ext_resource type="Script" path="res://InteractionSystem/InteractablesScrips/ChangeDialogueAfterEnd.cs" id="1_8hai1"]
+
+[node name="ChangeDialogueAfterEnd" type="Node3D"]
+script = ExtResource("1_8hai1")

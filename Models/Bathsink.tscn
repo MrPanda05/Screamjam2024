@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcnbpyoubg5wq"]
+
+[ext_resource type="PackedScene" uid="uid://cyjroj46y5chi" path="res://Models/ModelsFBX/bathsink.fbx" id="1_gxbqo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w4bg1"]
+size = Vector3(5.56372, 8.93677, 6.38745)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_v0xij"]
+size = Vector3(5.70273, 8.76273, 6.39818)
+
+[node name="bathsink" instance=ExtResource("1_gxbqo")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625854, -2.20813, -0.00012207)
+shape = SubResource("BoxShape3D_w4bg1")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.625908, -2.12114, 0)
+occluder = SubResource("BoxOccluder3D_v0xij")

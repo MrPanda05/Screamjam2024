@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dciv2n8bp6qth"]
+
+[ext_resource type="PackedScene" uid="uid://y53tnpgp02tr" path="res://InteractionSystem/NpcDialogueArea.tscn" id="1_trgjh"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_o6mqw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lv0v5"]
+
+[node name="GenericNPC" type="Node3D"]
+
+[node name="Template" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_o6mqw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Template"]
+collision_layer = 32
+collision_mask = 13
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Template/StaticBody3D"]
+shape = SubResource("CapsuleShape3D_lv0v5")
+
+[node name="InteractableArea" parent="." instance=ExtResource("1_trgjh")]
+
+[editable path="InteractableArea"]

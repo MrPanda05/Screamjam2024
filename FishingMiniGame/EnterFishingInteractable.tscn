@@ -7,12 +7,11 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ka3l1"]
 
-[node name="MeshInstance3D2" type="MeshInstance3D"]
+[node name="Fishing" type="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.83486, 1, 0)
 mesh = SubResource("BoxMesh_5j6jr")
 
 [node name="InteractableArea" parent="." instance=ExtResource("1_2v4ag")]
-canRepeat = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InteractableArea"]
 shape = SubResource("BoxShape3D_ka3l1")

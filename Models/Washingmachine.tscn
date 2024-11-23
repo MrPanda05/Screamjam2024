@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://3ki3kbcks626"]
+
+[ext_resource type="PackedScene" uid="uid://bwoptlfyffya1" path="res://Models/ModelsFBX/washingmachine.fbx" id="1_dm8ht"]
+
+[node name="washingmachine" instance=ExtResource("1_dm8ht")]

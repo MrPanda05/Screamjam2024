@@ -20,6 +20,10 @@ namespace DialogueSystem
             Area = GetParent<InteractableArea>();
             
         }
+        public void ChangeDialogue(DialogueResource newDialogue)
+        {
+            MyDialogue = newDialogue;
+        }
         public void Interaction()
         {
             DialogueManager.Instance.StartDialogue(MyDialogue);

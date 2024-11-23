@@ -1,10 +1,18 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbp50o74r160q"]
+[gd_scene load_steps=18 format=3 uid="uid://cbp50o74r160q"]
 
 [ext_resource type="PackedScene" uid="uid://dg451yda12u8a" path="res://Levels/FestivalBase.tscn" id="1_nlwmn"]
 [ext_resource type="Script" path="res://Levels/DaysLevels/Day1/FestivalDay1.cs" id="1_qvfxh"]
 [ext_resource type="PackedScene" uid="uid://bqcqx18c4v21u" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.tscn" id="3_lo5m2"]
 [ext_resource type="PackedScene" uid="uid://belqv623htmui" path="res://LePlayer/Player.tscn" id="4_3dqmy"]
-[ext_resource type="PackedScene" uid="uid://brdfquwtwre35" path="res://DialogueSystem/TestDialogueNpc.tscn" id="5_e1kcn"]
+[ext_resource type="PackedScene" uid="uid://cqr5i8sjwd1pb" path="res://Models/Festivaltent1.tscn" id="4_r7cax"]
+[ext_resource type="Resource" uid="uid://cs2p8sd8ls2re" path="res://DialogueSystem/DialogueResouces/TestDialogue.tres" id="7_eexqj"]
+[ext_resource type="PackedScene" uid="uid://bu8n55b43ksm" path="res://NPCs/Bob.tscn" id="7_wklfy"]
+[ext_resource type="Script" path="res://Commons/IEndDisableObjects.cs" id="8_fel6h"]
+[ext_resource type="PackedScene" uid="uid://dw84hbd3x6ej7" path="res://InteractionSystem/InteractablesScrips/ChangeDialogueAfterEnd.tscn" id="9_i7ky0"]
+[ext_resource type="Resource" uid="uid://cj6iqhwf5f2x3" path="res://DialogueSystem/DialogueResouces/Test2.tres" id="10_7n3d0"]
+[ext_resource type="PackedScene" uid="uid://dciv2n8bp6qth" path="res://NPCs/GenericNpc.tscn" id="11_i0y3s"]
+[ext_resource type="Resource" uid="uid://dh24487pfc57t" path="res://DialogueSystem/DialogueResouces/GenericMerchantDialogue1.tres" id="12_e44kq"]
+[ext_resource type="Resource" uid="uid://d1bjg6mwihdt6" path="res://DialogueSystem/DialogueResouces/GenericMerchantDialogue2.tres" id="13_mn05c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nkjnu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,10 +29,6 @@ glow_enabled = true
 
 [sub_resource type="PrismMesh" id="PrismMesh_nicf5"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_m402i"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_53r4p"]
-
 [node name="FestivalDay1" type="Node3D" node_paths=PackedStringArray("_spawnpoint")]
 script = ExtResource("1_qvfxh")
 _spawnpoint = NodePath("SpawnPoint")
@@ -39,6 +43,7 @@ environment = SubResource("Environment_jayuk")
 [node name="FestivalBase" parent="." instance=ExtResource("1_nlwmn")]
 
 [node name="TriggerGoFishing" parent="." instance=ExtResource("3_lo5m2")]
+process_mode = 4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.42188, 0.928057, -39.4775)
 
 [node name="TriggerScenChange" parent="TriggerGoFishing/InteractableArea" index="1"]
@@ -55,47 +60,63 @@ mesh = SubResource("PrismMesh_nicf5")
 
 [node name="Tents" type="Node3D" parent="Objects"]
 
-[node name="TentPlaceHolder" type="MeshInstance3D" parent="Objects/Tents"]
-transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, 5.88483, 0.868001, -6.51541)
-mesh = SubResource("BoxMesh_m402i")
+[node name="festivaltent" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
+transform = Transform3D(-0.538093, 0, -4.70416e-08, 0, 0.538093, 0, 4.70416e-08, 0, -0.538093, 6.01037, 0.58894, -7.18512)
 
-[node name="TentPlaceHolder2" type="MeshInstance3D" parent="Objects/Tents"]
-transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, 5.88483, 0.868001, 9.8799)
-mesh = SubResource("BoxMesh_m402i")
+[node name="festivaltent2" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
+transform = Transform3D(-0.538093, 0, -4.70416e-08, 0, 0.538093, 0, 4.70416e-08, 0, -0.538093, 6.01037, 0.58894, 4.53694)
 
-[node name="TentPlaceHolder3" type="MeshInstance3D" parent="Objects/Tents"]
-transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, 5.88483, 0.868001, 28.4607)
-mesh = SubResource("BoxMesh_m402i")
+[node name="festivaltent3" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
+transform = Transform3D(-0.538093, 0, -4.70416e-08, 0, 0.538093, 0, 4.70416e-08, 0, -0.538093, 6.01037, 0.58894, 15.3549)
 
-[node name="TentPlaceHolder4" type="MeshInstance3D" parent="Objects/Tents"]
-transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, -14.7672, 0.868001, 28.4607)
-mesh = SubResource("BoxMesh_m402i")
+[node name="festivaltent4" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
+transform = Transform3D(-2.35208e-08, 0, 0.538093, 0, 0.538093, 0, -0.538093, 0, -2.35208e-08, -3.6467, 0.58894, 30.5572)
 
-[node name="TentPlaceHolder5" type="MeshInstance3D" parent="Objects/Tents"]
-transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, -14.7672, 0.868001, 8.44956)
-mesh = SubResource("BoxMesh_m402i")
+[node name="festivaltent5" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
+transform = Transform3D(0.538093, 0, 1.77636e-15, 0, 0.538093, 0, -1.77636e-15, 0, 0.538093, -14.117, 0.58894, 14.2926)
 
-[node name="TentPlaceHolder6" type="MeshInstance3D" parent="Objects/Tents"]
-transform = Transform3D(2.51933, 0, 0, 0, 2.14076, 0, 0, 0, 9.63263, -14.7672, 0.868001, -5.09034)
-mesh = SubResource("BoxMesh_m402i")
-
-[node name="TentPlaceHolder7" type="MeshInstance3D" parent="Objects/Tents"]
-transform = Transform3D(-1.10123e-07, 0, 9.63263, 0, 2.14076, 0, -2.51933, 0, -4.21056e-07, -4.97982, 0.868001, 30.5061)
-mesh = SubResource("BoxMesh_m402i")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Objects/Tents/TentPlaceHolder7"]
-collision_layer = 4
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Tents/TentPlaceHolder7/StaticBody3D"]
-shape = SubResource("BoxShape3D_53r4p")
+[node name="festivaltent6" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
+transform = Transform3D(0.538093, 0, 1.77636e-15, 0, 0.538093, 0, -1.77636e-15, 0, 0.538093, -14.117, 0.58894, -0.691682)
 
 [node name="Player" parent="." instance=ExtResource("4_3dqmy")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -5.54246, 5.7968, -31.018)
 
 [node name="NPCS" type="Node3D" parent="."]
 
-[node name="TestDialogueNPC" parent="." instance=ExtResource("5_e1kcn")]
-transform = Transform3D(1.28308, 0, 0, 0, 1.28308, 0, 0, 0, 1.28308, -4.84129, 2.12454, 32.5067)
+[node name="Bob" parent="." instance=ExtResource("7_wklfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97349, 2.37379, 32.109)
+
+[node name="InteractableArea" parent="Bob" index="1"]
+canRepeat = true
+
+[node name="StartDialogue" parent="Bob/InteractableArea" index="1"]
+MyDialogue = ExtResource("7_eexqj")
+
+[node name="DisableAnyObject" type="Node3D" parent="Bob/InteractableArea/StartDialogue/EndDialogue" index="0" node_paths=PackedStringArray("_myObject")]
+script = ExtResource("8_fel6h")
+_myObject = NodePath("../../../../../TriggerGoFishing")
+_visibility = true
+
+[node name="ChangeDialogueAfterEnd" parent="Bob/InteractableArea/StartDialogue/EndDialogue" index="1" node_paths=PackedStringArray("_dialogueBox") instance=ExtResource("9_i7ky0")]
+_dialogueBox = NodePath("../..")
+_newDialogue = ExtResource("10_7n3d0")
+
+[node name="GenericMerchant" parent="." instance=ExtResource("11_i0y3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5963, 2.66513, -1.05883)
+
+[node name="StartDialogue" parent="GenericMerchant/InteractableArea" index="1"]
+MyDialogue = ExtResource("12_e44kq")
+
+[node name="Generic merchant2" parent="." instance=ExtResource("11_i0y3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53435, 2.11812, -7.6023)
+
+[node name="StartDialogue" parent="Generic merchant2/InteractableArea" index="1"]
+MyDialogue = ExtResource("13_mn05c")
 
 [editable path="TriggerGoFishing"]
-[editable path="TestDialogueNPC"]
+[editable path="Bob"]
+[editable path="Bob/InteractableArea"]
+[editable path="GenericMerchant"]
+[editable path="GenericMerchant/InteractableArea"]
+[editable path="Generic merchant2"]
+[editable path="Generic merchant2/InteractableArea"]
