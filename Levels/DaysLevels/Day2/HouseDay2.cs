@@ -3,18 +3,16 @@ using Commons;
 using Godot;
 using System;
 
-namespace Levels.Days
+namespace Levels
 {
-    /// <summary>
-    /// Initialize day 1 of the festival
-    /// </summary>
-    public partial class FestivalDay1 : Node3D
+    public partial class HouseDay2 : Node3D
     {
         [Export]
-        private Node3D _spawnpoint;
+        private Node3D Spawnpoint;
         public override void _Ready()
         {
-            GameManager.Instance.InitializeCurrentMainScene(this, _spawnpoint);
+            GameManager.Instance.InitializeCurrentMainScene(this, Spawnpoint, Constants.FISHING_DAY2_POOL);
+
         }
         public override void _ExitTree()
         {

@@ -24,6 +24,7 @@ namespace LePlayer.States
         public override void Exit()
         {
             FishingManager.Instance.ExitFishingMode();
+            LePlayer.FishingRod.Visible = false;
         }
 
         public override void FixUpdate(float delta)
@@ -34,11 +35,14 @@ namespace LePlayer.States
                 if (FishingManager.Instance.IsInFishingMode)
                 {
                     FishingManager.Instance.ExitFishingMode();
+                    LePlayer.FishingRod.Visible = false;
 
                 }
                 else
                 {
                     FishingManager.Instance.EnterFishingMode();
+                    LePlayer.FishingRod.Visible = true;
+
                 }
                 GD.Print("Is on fishing mode?" + FishingManager.Instance.IsInFishingMode);
             }

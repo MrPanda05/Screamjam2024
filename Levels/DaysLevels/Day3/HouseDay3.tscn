@@ -1,0 +1,54 @@
+[gd_scene load_steps=10 format=3 uid="uid://xqhx5pa3ugrj"]
+
+[ext_resource type="PackedScene" uid="uid://brxeldduenks8" path="res://Levels/PlayerBaseHouse.tscn" id="1_6dkj3"]
+[ext_resource type="Script" path="res://Levels/DaysLevels/Day3/HouseDay3.cs" id="1_a1dgv"]
+[ext_resource type="PackedScene" uid="uid://c7fodacx5xvpf" path="res://Models/HouseStaticObjects.tscn" id="1_y3785"]
+[ext_resource type="PackedScene" uid="uid://mecu2sac5vye" path="res://Models/Door.tscn" id="4_mx8hf"]
+[ext_resource type="PackedScene" uid="uid://bqcqx18c4v21u" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.tscn" id="5_tjaqo"]
+[ext_resource type="PackedScene" uid="uid://belqv623htmui" path="res://LePlayer/Player.tscn" id="6_dxcn6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wmq8f"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_821lp"]
+sky_material = SubResource("ProceduralSkyMaterial_wmq8f")
+
+[sub_resource type="Environment" id="Environment_u4j3k"]
+background_mode = 2
+sky = SubResource("Sky_821lp")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="HouseDay3" type="Node3D" node_paths=PackedStringArray("Spawnpoint")]
+script = ExtResource("1_a1dgv")
+Spawnpoint = NodePath("SpawnPoint")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u4j3k")
+
+[node name="PlayerBaseHouse" parent="." instance=ExtResource("1_6dkj3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="StaticObjects" parent="." instance=ExtResource("1_y3785")]
+
+[node name="SpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57219, 1.63397, -3.42692)
+
+[node name="door" parent="." instance=ExtResource("4_mx8hf")]
+transform = Transform3D(1, 0, 0, 0, 1.28331, 0, 0, 0, 1, -17, 2.58925, -10.0912)
+
+[node name="Player" parent="." instance=ExtResource("6_dxcn6")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 3.47884, 4.19049, -8.70208)
+
+[node name="TriggerChangeScene" parent="." instance=ExtResource("5_tjaqo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8476, 3.07041, -10.2407)
+
+[node name="TriggerScenChange" parent="TriggerChangeScene/InteractableArea" index="1"]
+path = "res://Levels/DaysLevels/Day3/FestivalDay3.tscn"
+
+[editable path="TriggerChangeScene"]

@@ -26,7 +26,7 @@ namespace DialogueSystem
         }
         public void Interaction()
         {
-            DialogueManager.Instance.StartDialogue(MyDialogue);
+            DialogueManager.Instance.StartDialogue(MyDialogue, this);
         }
     }
 }

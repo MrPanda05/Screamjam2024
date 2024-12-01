@@ -1,5 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://c6bs2m2dnyq3q"]
+[gd_scene load_steps=3 format=3 uid="uid://c6bs2m2dnyq3q"]
 
 [ext_resource type="PackedScene" uid="uid://3o44x0elyb5t" path="res://Models/ModelsFBX/festivalTable.fbx" id="1_6spbs"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_yajdc"]
+size = Vector3(2.19214, 2.11108, 8.00818)
+
 [node name="festivalTable" instance=ExtResource("1_6spbs")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00012207, -0.94397, 0.00506592)
+shape = SubResource("BoxShape3D_yajdc")

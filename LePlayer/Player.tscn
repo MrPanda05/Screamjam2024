@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://belqv623htmui"]
+[gd_scene load_steps=10 format=3 uid="uid://belqv623htmui"]
 
 [ext_resource type="Script" path="res://LePlayer/Player.cs" id="1_y33sk"]
 [ext_resource type="Script" path="res://LePlayer/Head.cs" id="2_a8x5g"]
+[ext_resource type="PackedScene" uid="uid://coxhwhxawdc1m" path="res://Models/Fishingrod.tscn" id="3_cowu0"]
 [ext_resource type="PackedScene" uid="uid://de2ogan80q6ki" path="res://Commons/Components/VelocityComponent3D.tscn" id="3_elduw"]
 [ext_resource type="PackedScene" uid="uid://ckv3k0str6a1m" path="res://Commons/FSM/FiniteStateMachine.tscn" id="4_8c6fr"]
 [ext_resource type="Script" path="res://LePlayer/States/PlayerMovementState.cs" id="5_me2l2"]
@@ -12,7 +13,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mbgc6"]
 radius = 0.243603
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("velocityComp", "Head", "Camera", "FSM") groups=["Player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("velocityComp", "Head", "Camera", "FSM", "FishingRod") groups=["Player"]]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
 collision_mask = 28
 script = ExtResource("1_y33sk")
@@ -21,6 +22,7 @@ Sens = 0.005
 Head = NodePath("Head")
 Camera = NodePath("Head/POV")
 FSM = NodePath("FiniteStateMachine")
+FishingRod = NodePath("Head/POV/fishingrod")
 
 [node name="Head" type="Node3D" parent="." node_paths=PackedStringArray("_crosshair")]
 script = ExtResource("2_a8x5g")
@@ -35,6 +37,10 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.00345048, -0.0191277
 target_position = Vector3(0, 0, -6)
 collision_mask = 2
 collide_with_areas = true
+
+[node name="fishingrod" parent="Head/POV" instance=ExtResource("3_cowu0")]
+transform = Transform3D(-0.304963, 0, -0.0030553, 0, 0.304979, 0, 0.0030553, 0, -0.304963, 0.0925788, 0, -0.712248)
+visible = false
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 1, 0, 0, 0, 0.5, 0, 0, 0)

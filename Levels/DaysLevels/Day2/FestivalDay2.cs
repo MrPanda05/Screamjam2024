@@ -3,12 +3,9 @@ using Commons;
 using Godot;
 using System;
 
-namespace Levels.Days
+namespace Levels
 {
-    /// <summary>
-    /// Initialize day 1 of the festival
-    /// </summary>
-    public partial class FestivalDay1 : Node3D
+    public partial class FestivalDay2 : Node3D
     {
         [Export]
         private Node3D _spawnpoint;

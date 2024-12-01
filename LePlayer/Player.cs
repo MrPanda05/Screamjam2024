@@ -20,6 +20,7 @@ namespace LePlayer
         [Export] public Node3D Head { get; private set; }
         [Export] public Camera3D Camera { get; private set; }
         [Export] public FiniteStateMachine FSM { get; private set; }
+        [Export] public Node3D FishingRod { get; private set; }
 
         private bool jumping;
 

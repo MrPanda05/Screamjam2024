@@ -32,8 +32,12 @@ namespace DialogueSystem
         private GameUi _gameUi;
         private DialogueBox _dialogueBox;
 
+        private Node3D _tempNodeDialogue;
+
         public static Action<int> OnDialogueChanged;
-        public static Action<int> OnDialogueStoped;
+        public static Action OnDialogueStoped;
+        public static Action OnDialogueStarted;
+
 
 
         public override void _Ready()
@@ -45,6 +49,10 @@ namespace DialogueSystem
             }
             Instance = this;
             _timerMonologue = GetChild<Timer>(0);
+        }
+        public Node3D GetTempNode()
+        {
+            return _tempNodeDialogue;
         }
 
         #region DebugDialogue
@@ -116,7 +124,7 @@ namespace DialogueSystem
             {
                 CurrentState = DialogueState.FREE;
                 StopDialogue();
-                OnDialogueStoped?.Invoke(_currentDialogue.MyId);
+                OnDialogueStoped?.Invoke();
                 return;
             }
             _keyIndex++;
@@ -155,10 +163,11 @@ namespace DialogueSystem
             _keyIndex = 0;
             _keyList = null;
             _currentKey = string.Empty;
+            _tempNodeDialogue = null;
 
         }
 
-        public void StartDialogue(DialogueResource dialogue)
+        public void StartDialogue(DialogueResource dialogue, Node3D _dialogueNode)
         {
             if (CurrentState == DialogueState.OTHER) return;
             if(_dialogueBox == null)
@@ -166,7 +175,8 @@ namespace DialogueSystem
                 _gameUi = GetTree().GetFirstNodeInGroup("GameUI") as GameUi;
                 _dialogueBox = _gameUi.DialogueBoxNode;
             }
-            
+            _tempNodeDialogue = _dialogueNode;
+
             //Add check to see if is already in use
             //Override the dialogue
             CurrentState = DialogueState.USING;
@@ -177,15 +187,23 @@ namespace DialogueSystem
             Godot.Collections.Dictionary<string, string> item = _currentDialogue.Pages[_currentPage];
             _keyList = item.Keys.ToList();
             _currentKey = _keyList[_keyIndex];
+            OnDialogueStarted?.Invoke();
             //DebugPrint();
             //PrintCurrentDialogue();
             ShowCurrentDialogue();
         }
         public void ForceStopCurrentDialogue()
         {
-            //stops current dialogue
+            //stops current dialogue but don't call the on dialogue ended
             CurrentState = DialogueState.FREE;
-            StopDialogue();
+            _gameUi.SetVisibilityDialogueBox(false);
+            _dialogueBox.UpdateDialogue(string.Empty, string.Empty);
+            _currentDialogue = null;
+            _currentPage = 0;
+            _keyIndex = 0;
+            _keyList = null;
+            _currentKey = string.Empty;
+            _tempNodeDialogue = null;
         }
         #endregion
 
@@ -214,8 +232,7 @@ namespace DialogueSystem
         public override void _UnhandledInput(InputEvent @event)
         {
             if (CurrentState != DialogueState.USING) return;
-            if (@event is not InputEventKey eventKey) return;
-            if (eventKey.Pressed && !eventKey.IsEcho() && eventKey.Keycode == Key.P)
+            if (Input.IsActionJustPressed("LeftClick"))
             {
                 NextDialogue();
                 //PrintCurrentDialogue();

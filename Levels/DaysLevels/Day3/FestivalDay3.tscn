@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://j4keqganh8p7"]
+
+[ext_resource type="Script" path="res://Levels/DaysLevels/Day3/FestivalDay3.cs" id="1_mkcsr"]
+[ext_resource type="PackedScene" uid="uid://dg451yda12u8a" path="res://Levels/FestivalBase.tscn" id="1_s0q5y"]
+[ext_resource type="PackedScene" uid="uid://bqcqx18c4v21u" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.tscn" id="3_iv7d6"]
+[ext_resource type="PackedScene" uid="uid://qm2vfivcif70" path="res://DialogueSystem/InnerMologueArea.tscn" id="4_rdrg7"]
+[ext_resource type="PackedScene" uid="uid://bu8n55b43ksm" path="res://NPCs/Bob.tscn" id="5_s0xau"]
+[ext_resource type="Resource" uid="uid://caqmocx2lopjh" path="res://DialogueSystem/DialogueResouces/BobDialogues/D3BobDialogue1.tres" id="6_1dpkb"]
+[ext_resource type="Script" path="res://Commons/IEndDisableObjects.cs" id="7_tjfy4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_738r5"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_32t0m"]
+sky_material = SubResource("ProceduralSkyMaterial_738r5")
+
+[sub_resource type="Environment" id="Environment_uylqt"]
+background_mode = 2
+sky = SubResource("Sky_32t0m")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aadtq"]
+size = Vector3(1.35962, 1.13684, 1.55371)
+
+[node name="FestivalDay3" type="Node3D" node_paths=PackedStringArray("_spawnpoint")]
+script = ExtResource("1_mkcsr")
+_spawnpoint = NodePath("Spawnpoint")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uylqt")
+
+[node name="FestivalBase" parent="." instance=ExtResource("1_s0q5y")]
+
+[node name="Spawnpoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52636, 3.80233, -37.0009)
+
+[node name="TriggerChangeScene" parent="." instance=ExtResource("3_iv7d6")]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29004, 1.40615, -39.5367)
+
+[node name="TriggerScenChange" parent="TriggerChangeScene/InteractableArea" index="1"]
+path = "res://Levels/FishingSpot.tscn"
+
+[node name="InnerMonologueArea" parent="." instance=ExtResource("4_rdrg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32862, 1.28871, -39.6443)
+
+[node name="StartInnerMonologue" parent="InnerMonologueArea" index="0"]
+myDialogue = "I should see bob"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerMonologueArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123291, 0.0684204, -0.133301)
+shape = SubResource("BoxShape3D_aadtq")
+
+[node name="Bob" parent="." instance=ExtResource("5_s0xau")]
+transform = Transform3D(1, 0, 0, 0, 1.62019, 0, 0, 0, 1, -3.31881, 2.10779, 32.9154)
+
+[node name="StartDialogue" parent="Bob/InteractableArea" index="1"]
+MyDialogue = ExtResource("6_1dpkb")
+
+[node name="DisableTrigger" type="Node3D" parent="Bob/InteractableArea/StartDialogue/EndDialogue" index="0" node_paths=PackedStringArray("_myObject")]
+script = ExtResource("7_tjfy4")
+_myObject = NodePath("../../../../../InnerMonologueArea")
+_processMode = 4
+
+[node name="EnableTrigger" type="Node3D" parent="Bob/InteractableArea/StartDialogue/EndDialogue" index="1" node_paths=PackedStringArray("_myObject")]
+script = ExtResource("7_tjfy4")
+_myObject = NodePath("../../../../../TriggerChangeScene")
+
+[editable path="TriggerChangeScene"]
+[editable path="InnerMonologueArea"]
+[editable path="Bob"]
+[editable path="Bob/InteractableArea"]

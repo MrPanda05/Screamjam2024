@@ -1,18 +1,27 @@
-[gd_scene load_steps=18 format=3 uid="uid://cbp50o74r160q"]
+[gd_scene load_steps=28 format=3 uid="uid://cbp50o74r160q"]
 
 [ext_resource type="PackedScene" uid="uid://dg451yda12u8a" path="res://Levels/FestivalBase.tscn" id="1_nlwmn"]
 [ext_resource type="Script" path="res://Levels/DaysLevels/Day1/FestivalDay1.cs" id="1_qvfxh"]
+[ext_resource type="Script" path="res://InteractionSystem/InteractableArea.cs" id="3_5tqsq"]
 [ext_resource type="PackedScene" uid="uid://bqcqx18c4v21u" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.tscn" id="3_lo5m2"]
 [ext_resource type="PackedScene" uid="uid://belqv623htmui" path="res://LePlayer/Player.tscn" id="4_3dqmy"]
-[ext_resource type="PackedScene" uid="uid://cqr5i8sjwd1pb" path="res://Models/Festivaltent1.tscn" id="4_r7cax"]
-[ext_resource type="Resource" uid="uid://cs2p8sd8ls2re" path="res://DialogueSystem/DialogueResouces/TestDialogue.tres" id="7_eexqj"]
+[ext_resource type="PackedScene" uid="uid://blrovxh5slk8q" path="res://DialogueSystem/StartInnerMonologue.tscn" id="4_5m8l5"]
+[ext_resource type="PackedScene" uid="uid://mogdks8gavqv" path="res://Models/FestivalTableComplete.tscn" id="6_7xboh"]
+[ext_resource type="PackedScene" uid="uid://dmiov0f3xm2ii" path="res://Models/Car1.tscn" id="7_8snwl"]
+[ext_resource type="Resource" uid="uid://cs2p8sd8ls2re" path="res://DialogueSystem/DialogueResouces/BobDialogues/TestDialogue.tres" id="7_eexqj"]
 [ext_resource type="PackedScene" uid="uid://bu8n55b43ksm" path="res://NPCs/Bob.tscn" id="7_wklfy"]
 [ext_resource type="Script" path="res://Commons/IEndDisableObjects.cs" id="8_fel6h"]
 [ext_resource type="PackedScene" uid="uid://dw84hbd3x6ej7" path="res://InteractionSystem/InteractablesScrips/ChangeDialogueAfterEnd.tscn" id="9_i7ky0"]
-[ext_resource type="Resource" uid="uid://cj6iqhwf5f2x3" path="res://DialogueSystem/DialogueResouces/Test2.tres" id="10_7n3d0"]
+[ext_resource type="Resource" uid="uid://cj6iqhwf5f2x3" path="res://DialogueSystem/DialogueResouces/BobDialogues/Test2.tres" id="10_7n3d0"]
 [ext_resource type="PackedScene" uid="uid://dciv2n8bp6qth" path="res://NPCs/GenericNpc.tscn" id="11_i0y3s"]
 [ext_resource type="Resource" uid="uid://dh24487pfc57t" path="res://DialogueSystem/DialogueResouces/GenericMerchantDialogue1.tres" id="12_e44kq"]
+[ext_resource type="PackedScene" uid="uid://c27bsutmdur1v" path="res://Models/Table2.tscn" id="12_kv8ox"]
 [ext_resource type="Resource" uid="uid://d1bjg6mwihdt6" path="res://DialogueSystem/DialogueResouces/GenericMerchantDialogue2.tres" id="13_mn05c"]
+[ext_resource type="PackedScene" uid="uid://c6bs2m2dnyq3q" path="res://Models/FestivalTable.tscn" id="14_sairl"]
+[ext_resource type="PackedScene" uid="uid://b742b3pvl7uyw" path="res://Models/Woodplank.tscn" id="15_4vq77"]
+[ext_resource type="PackedScene" uid="uid://8u0qb4duxksr" path="res://Models/Basket2.tscn" id="19_ou4wb"]
+[ext_resource type="PackedScene" uid="uid://c0yqqdpukp0h8" path="res://Models/Basket.tscn" id="20_6jke2"]
+[ext_resource type="Resource" uid="uid://pgx3714sc60q" path="res://DialogueSystem/DialogueResouces/MariaDialogues/D1mariadialogue1.tres" id="22_4a4v1"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nkjnu"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -26,6 +35,9 @@ background_mode = 2
 sky = SubResource("Sky_d6ydn")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m37jd"]
+size = Vector3(1.55369, 1.4292, 1.62187)
 
 [sub_resource type="PrismMesh" id="PrismMesh_nicf5"]
 
@@ -41,6 +53,20 @@ shadow_enabled = true
 environment = SubResource("Environment_jayuk")
 
 [node name="FestivalBase" parent="." instance=ExtResource("1_nlwmn")]
+
+[node name="InnerMonologueArea" type="Area3D" parent="." groups=["InteractableAreas"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08066, 0, -41)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_5tqsq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerMonologueArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.712549, 0.720184, 1.53764)
+shape = SubResource("BoxShape3D_m37jd")
+
+[node name="StartInnerMonologue" parent="InnerMonologueArea" instance=ExtResource("4_5m8l5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.597049, 0)
+myDialogue = "I should talk to Bob"
 
 [node name="TriggerGoFishing" parent="." instance=ExtResource("3_lo5m2")]
 process_mode = 4
@@ -60,23 +86,74 @@ mesh = SubResource("PrismMesh_nicf5")
 
 [node name="Tents" type="Node3D" parent="Objects"]
 
-[node name="festivaltent" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
-transform = Transform3D(-0.538093, 0, -4.70416e-08, 0, 0.538093, 0, 4.70416e-08, 0, -0.538093, 6.01037, 0.58894, -7.18512)
+[node name="festivalTable" parent="Objects/Tents" instance=ExtResource("14_sairl")]
+transform = Transform3D(0.986515, 0, -0.16367, 0, 1, 0, 0.16367, 0, 0.986515, 6.75273, 2.51895, 4.57867)
 
-[node name="festivaltent2" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
-transform = Transform3D(-0.538093, 0, -4.70416e-08, 0, 0.538093, 0, 4.70416e-08, 0, -0.538093, 6.01037, 0.58894, 4.53694)
+[node name="woodplank" parent="Objects/Tents" instance=ExtResource("15_4vq77")]
+transform = Transform3D(1.71075, -0.0562207, -0.60272, 0.0529184, 1.81382, -0.0189873, 0.603019, 0.00032375, 1.71157, 5.93788, 2.59443, 5.12787)
 
-[node name="festivaltent3" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
-transform = Transform3D(-0.538093, 0, -4.70416e-08, 0, 0.538093, 0, 4.70416e-08, 0, -0.538093, 6.01037, 0.58894, 15.3549)
+[node name="festivalTable2" parent="Objects/Tents" instance=ExtResource("14_sairl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -4.71966, 2.57466, 29.7314)
 
-[node name="festivaltent4" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
-transform = Transform3D(-2.35208e-08, 0, 0.538093, 0, 0.538093, 0, -0.538093, 0, -2.35208e-08, -3.6467, 0.58894, 30.5572)
+[node name="woodplank2" parent="Objects/Tents" instance=ExtResource("15_4vq77")]
+transform = Transform3D(1.2082, 0, 0.444778, 0, 1, 0, -0.27301, 0, 1.96835, -7.90666, 2.66758, 29.7831)
 
-[node name="festivaltent5" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
-transform = Transform3D(0.538093, 0, 1.77636e-15, 0, 0.538093, 0, -1.77636e-15, 0, 0.538093, -14.117, 0.58894, 14.2926)
+[node name="woodplank3" parent="Objects/Tents" instance=ExtResource("15_4vq77")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10354, 2.66758, 29.7831)
 
-[node name="festivaltent6" parent="Objects/Tents" instance=ExtResource("4_r7cax")]
-transform = Transform3D(0.538093, 0, 1.77636e-15, 0, 0.538093, 0, -1.77636e-15, 0, 0.538093, -14.117, 0.58894, -0.691682)
+[node name="festivalTableComplete" parent="Objects/Tents" instance=ExtResource("6_7xboh")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -13.443, 2.29906, -0.958196)
+
+[node name="TentLabel" parent="Objects/Tents/festivalTableComplete" index="2"]
+text = "Veggies
+"
+
+[node name="festivalTableComplete2" parent="Objects/Tents" instance=ExtResource("6_7xboh")]
+transform = Transform3D(-0.9, 0, -7.86805e-08, 0, 0.9, 0, 7.86805e-08, 0, -0.9, 6.00819, 2.41341, -7.30473)
+
+[node name="TentLabel" parent="Objects/Tents/festivalTableComplete2" index="2"]
+text = "Fresh fruits"
+
+[node name="car1" parent="Objects" instance=ExtResource("7_8snwl")]
+transform = Transform3D(-6.11959e-08, 0, 1.4, 0, 1.4, 0, -1.4, 0, -6.11959e-08, 9.86481, 3.35273, -17.8034)
+
+[node name="festivalTable" parent="Objects" instance=ExtResource("14_sairl")]
+transform = Transform3D(0.144273, -0.887845, 0.0302725, 0.888351, 0.144332, -0.000696078, -0.00416809, 0.0299923, 0.89949, -14.244, 1.49352, 14.5804)
+
+[node name="woodplank" parent="Objects" instance=ExtResource("15_4vq77")]
+transform = Transform3D(1.4398, 0, 0, 0, 1, 0, 0, 0, 2.38854, -0.448114, 0.579949, 30.3699)
+
+[node name="Text" parent="Objects/woodplank" index="1"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 3.82137e-15, 4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -0.00695089, 0.0481783, 0.00560951)
+text = "Fish on a Fish
+"
+
+[node name="basket2" parent="Objects" instance=ExtResource("19_ou4wb")]
+transform = Transform3D(0.642558, 0, 0, 0, 0.642558, 0, 0, 0, 0.642558, 5.98559, 0.97355, -3.12345)
+
+[node name="basket" parent="Objects" instance=ExtResource("20_6jke2")]
+transform = Transform3D(0.987483, 0, 0.157727, 0, 1, 0, -0.157727, 0, 0.987483, 5.92338, 2.66097, -7.81415)
+
+[node name="basket3" parent="Objects" instance=ExtResource("20_6jke2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92338, 2.66097, -5.02808)
+
+[node name="basket4" parent="Objects" instance=ExtResource("20_6jke2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10331, 2.87532, 29.9902)
+
+[node name="basket5" parent="Objects" instance=ExtResource("19_ou4wb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60573, 1.40059, 29.6287)
+
+[node name="basket6" parent="Objects" instance=ExtResource("20_6jke2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.474, 2.55374, -0.638399)
+
+[node name="basket7" parent="Objects" instance=ExtResource("20_6jke2")]
+transform = Transform3D(0.598405, 0.0763271, -0.79755, 0.36684, -0.91108, 0.188049, -0.712279, -0.405102, -0.573194, -12.836, 0.860493, 18.1575)
+
+[node name="basket8" parent="Objects" instance=ExtResource("19_ou4wb")]
+transform = Transform3D(-0.000102367, 0.67502, -0.000231168, -0.67502, -0.000102128, 0.000685309, 0.000685274, 0.000231274, 0.67502, -14.1584, 1.39318, 19.8396)
+
+[node name="table2" parent="Objects" instance=ExtResource("12_kv8ox")]
+transform = Transform3D(-1.29113, 0.00126509, 0.108737, 0.00118561, 1.2957, -0.000996896, -0.108738, -0.000893876, -1.29113, 6.00076, 2.42135, 13.4799)
 
 [node name="Player" parent="." instance=ExtResource("4_3dqmy")]
 transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -5.54246, 5.7968, -31.018)
@@ -84,7 +161,8 @@ transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -5.54246, 5.7968, -31.0
 [node name="NPCS" type="Node3D" parent="."]
 
 [node name="Bob" parent="." instance=ExtResource("7_wklfy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.97349, 2.37379, 32.109)
+transform = Transform3D(1, 0, 0, 0, 1.82443, 0, 0, 0, 1, -3.97349, 2.28583, 31.6946)
+metadata/_edit_group_ = true
 
 [node name="InteractableArea" parent="Bob" index="1"]
 canRepeat = true
@@ -97,26 +175,50 @@ script = ExtResource("8_fel6h")
 _myObject = NodePath("../../../../../TriggerGoFishing")
 _visibility = true
 
-[node name="ChangeDialogueAfterEnd" parent="Bob/InteractableArea/StartDialogue/EndDialogue" index="1" node_paths=PackedStringArray("_dialogueBox") instance=ExtResource("9_i7ky0")]
+[node name="DisableDialogue" type="Node3D" parent="Bob/InteractableArea/StartDialogue/EndDialogue" index="1" node_paths=PackedStringArray("_myObject")]
+script = ExtResource("8_fel6h")
+_myObject = NodePath("../../../../../InnerMonologueArea")
+_processMode = 4
+
+[node name="ChangeDialogueAfterEnd" parent="Bob/InteractableArea/StartDialogue/EndDialogue" index="2" node_paths=PackedStringArray("_dialogueBox") instance=ExtResource("9_i7ky0")]
 _dialogueBox = NodePath("../..")
 _newDialogue = ExtResource("10_7n3d0")
 
 [node name="GenericMerchant" parent="." instance=ExtResource("11_i0y3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.5963, 2.66513, -1.05883)
+transform = Transform3D(1, 0, 0, 0, 1.55253, 0, 0, 0, 1, -15.1725, 2.00946, -1.36713)
+metadata/_edit_group_ = true
+
+[node name="InteractableArea" parent="GenericMerchant" index="1"]
+canRepeat = true
 
 [node name="StartDialogue" parent="GenericMerchant/InteractableArea" index="1"]
 MyDialogue = ExtResource("12_e44kq")
 
 [node name="Generic merchant2" parent="." instance=ExtResource("11_i0y3s")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.53435, 2.11812, -7.6023)
+transform = Transform3D(1, 0, 0, 0, 1.72059, 0, 0, 0, 1, 7.53435, 2.12375, -7.6023)
+metadata/_edit_group_ = true
+
+[node name="InteractableArea" parent="Generic merchant2" index="1"]
+canRepeat = true
 
 [node name="StartDialogue" parent="Generic merchant2/InteractableArea" index="1"]
 MyDialogue = ExtResource("13_mn05c")
 
+[node name="Genericmrchant3" parent="." instance=ExtResource("11_i0y3s")]
+transform = Transform3D(1, 0, 0, 0, 1.64255, 0, 0, 0, 1, -15.2128, 1.8394, 13.849)
+
+[node name="StartDialogue" parent="Genericmrchant3/InteractableArea" index="1"]
+MyDialogue = ExtResource("22_4a4v1")
+
 [editable path="TriggerGoFishing"]
+[editable path="Objects/Tents/festivalTableComplete"]
+[editable path="Objects/Tents/festivalTableComplete2"]
+[editable path="Objects/woodplank"]
 [editable path="Bob"]
 [editable path="Bob/InteractableArea"]
 [editable path="GenericMerchant"]
 [editable path="GenericMerchant/InteractableArea"]
 [editable path="Generic merchant2"]
 [editable path="Generic merchant2/InteractableArea"]
+[editable path="Genericmrchant3"]
+[editable path="Genericmrchant3/InteractableArea"]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c27bsutmdur1v"]
+
+[ext_resource type="PackedScene" uid="uid://b4cgbkg2fkpvi" path="res://Models/ModelsFBX/table2.fbx" id="1_ja870"]
+
+[node name="table2" instance=ExtResource("1_ja870")]

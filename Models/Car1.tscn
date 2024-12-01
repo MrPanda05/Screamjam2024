@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmiov0f3xm2ii"]
+
+[ext_resource type="PackedScene" uid="uid://0ohkmj3luqic" path="res://Models/ModelsFBX/car1.fbx" id="1_2r1ho"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gxc10"]
+size = Vector3(3.2439, 2.4978, 6.89026)
+
+[node name="car1" instance=ExtResource("1_2r1ho")]
+transform = Transform3D(1.4, 0, 0, 0, 1.4, 0, 0, 0, 1.4, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0240479, -0.0142822, 0.430481)
+shape = SubResource("BoxShape3D_gxc10")

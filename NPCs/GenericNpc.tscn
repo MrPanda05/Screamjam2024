@@ -7,6 +7,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_lv0v5"]
 
 [node name="GenericNPC" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1.64255, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Template" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_o6mqw")

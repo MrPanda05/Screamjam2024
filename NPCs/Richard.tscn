@@ -12,6 +12,7 @@ radius = 0.575716
 [node name="Richard" type="Node3D"]
 
 [node name="template" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.65311, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_20gr8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]

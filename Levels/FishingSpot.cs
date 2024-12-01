@@ -11,7 +11,8 @@ namespace Levels.Days
     {
         [Export]
         public Node3D spawnPosition;
-        //todo add a resource that tell how the day will be?????
+
+        //todo add a way to ask the game manager which next scene shall be
         public override void _Ready()
         {
             GameManager.Instance.InitializeCurrentMainScene(this, spawnPosition);

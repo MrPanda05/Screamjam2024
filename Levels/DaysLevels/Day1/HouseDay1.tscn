@@ -1,31 +1,18 @@
-[gd_scene load_steps=31 format=3 uid="uid://buu5avlunxynh"]
+[gd_scene load_steps=19 format=3 uid="uid://buu5avlunxynh"]
 
 [ext_resource type="Script" path="res://Levels/DaysLevels/Day1/HouseDay1.cs" id="1_6o517"]
 [ext_resource type="PackedScene" uid="uid://bqcqx18c4v21u" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.tscn" id="1_gm8kp"]
 [ext_resource type="PackedScene" uid="uid://belqv623htmui" path="res://LePlayer/Player.tscn" id="2_e8m7a"]
+[ext_resource type="PackedScene" uid="uid://c7fodacx5xvpf" path="res://Models/HouseStaticObjects.tscn" id="4_38u8j"]
 [ext_resource type="PackedScene" uid="uid://brxeldduenks8" path="res://Levels/PlayerBaseHouse.tscn" id="4_202ty"]
-[ext_resource type="PackedScene" uid="uid://bnbt7curro3ej" path="res://Models/Bed.tscn" id="5_74nvo"]
-[ext_resource type="PackedScene" uid="uid://cdgiykd1jetbc" path="res://Models/Cabinet.tscn" id="6_c8hwj"]
-[ext_resource type="PackedScene" uid="uid://ban61xv2dxg0j" path="res://Models/Sunflowerpot.tscn" id="7_ihfyj"]
-[ext_resource type="PackedScene" uid="uid://8sql0jfip8a7" path="res://Models/Toilet.tscn" id="8_my6jv"]
-[ext_resource type="PackedScene" uid="uid://lbgtsoegbsh8" path="res://Models/BasicSofa.tscn" id="9_58odv"]
-[ext_resource type="PackedScene" uid="uid://6fdx8lvkgk6l" path="res://Models/Kitchentop.tscn" id="10_4etgi"]
-[ext_resource type="PackedScene" uid="uid://c84tfsts1vklk" path="res://Models/Stove.tscn" id="11_evacu"]
-[ext_resource type="PackedScene" uid="uid://dc0n555tqx3h5" path="res://Models/Table1.tscn" id="12_3xxv4"]
-[ext_resource type="PackedScene" uid="uid://bqjmafaqnl2e8" path="res://Models/Chair1.tscn" id="13_1uwjb"]
 [ext_resource type="PackedScene" uid="uid://mecu2sac5vye" path="res://Models/Door.tscn" id="14_fmsaw"]
-[ext_resource type="PackedScene" uid="uid://n2nhftkscw5k" path="res://Models/Trashbin.tscn" id="15_1vtxv"]
 [ext_resource type="PackedScene" uid="uid://qm2vfivcif70" path="res://DialogueSystem/InnerMologueArea.tscn" id="15_r8xxa"]
 [ext_resource type="PackedScene" uid="uid://8pbqatmstusu" path="res://Models/Apple.tscn" id="16_otvkh"]
-[ext_resource type="PackedScene" uid="uid://3ki3kbcks626" path="res://Models/Washingmachine.tscn" id="16_u4615"]
 [ext_resource type="PackedScene" uid="uid://cd6wc3r3lqw5e" path="res://InteractionSystem/InteractableArea.tscn" id="17_nnga7"]
 [ext_resource type="Script" path="res://InteractionSystem/InteractablesScrips/EatInteractable.cs" id="18_2r5uw"]
 [ext_resource type="PackedScene" uid="uid://blrovxh5slk8q" path="res://DialogueSystem/StartInnerMonologue.tscn" id="18_3bg3y"]
 [ext_resource type="Script" path="res://Levels/DaysLevels/Day1/EnableDoorAfterEat.cs" id="19_3ve2l"]
 [ext_resource type="PackedScene" uid="uid://ksghcsgtxlte" path="res://Commons/DisableAnyObject.tscn" id="20_yg5m5"]
-[ext_resource type="PackedScene" uid="uid://6tbh28prvdqk" path="res://Models/Refrigirator.tscn" id="22_ru1qj"]
-[ext_resource type="PackedScene" uid="uid://bcnbpyoubg5wq" path="res://Models/Bathsink.tscn" id="23_kfxll"]
-[ext_resource type="PackedScene" uid="uid://cb7lb6g5id507" path="res://Models/Boxshower.tscn" id="26_igbdl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8xg1n"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -39,6 +26,9 @@ background_mode = 2
 sky = SubResource("Sky_01v0f")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v7afa"]
+size = Vector3(1.52832, 2.33215, 2.23242)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p7nd7"]
 size = Vector3(0.548218, 0.387573, 0.504639)
@@ -64,65 +54,7 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 [node name="SpawnPoint" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 1.5563, 1.20239, -3.31376)
 
-[node name="StaticObjects" type="Node3D" parent="."]
-editor_description = "House furniture"
-
-[node name="bed" parent="StaticObjects" instance=ExtResource("5_74nvo")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.86731, 0.943311, 0)
-
-[node name="cabinet" parent="StaticObjects" instance=ExtResource("6_c8hwj")]
-transform = Transform3D(0.37291, 0, 0, 0, 0.37291, 0, 0, 0, 0.37291, -1.16683, 1.0136, -3.27053)
-
-[node name="Sunflowerpot" parent="StaticObjects" instance=ExtResource("7_ihfyj")]
-transform = Transform3D(-6.0243e-09, 0, -0.13782, 0, 0.13782, 0, 0.13782, 0, -6.0243e-09, -1.20091, 1.81488, -2.65255)
-
-[node name="toilet" parent="StaticObjects" instance=ExtResource("8_my6jv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.74526, 0.557951, 17.6102)
-
-[node name="cabinet3" parent="StaticObjects" instance=ExtResource("6_c8hwj")]
-transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, -16.5582, 1.06395, 3.01274)
-
-[node name="cabinet4" parent="StaticObjects" instance=ExtResource("6_c8hwj")]
-transform = Transform3D(0.48, 0, 0, 0, 0.48, 0, 0, 0, 0.48, -16.5582, 1.06395, 6.35135)
-
-[node name="BasicSofa" parent="StaticObjects" instance=ExtResource("9_58odv")]
-transform = Transform3D(-1.71571, 0, 1.49992e-07, 0, 1.71571, 0, -1.49992e-07, 0, -1.71571, -3.82337, 0.536133, -2.39044)
-
-[node name="kitchentop" parent="StaticObjects" instance=ExtResource("10_4etgi")]
-transform = Transform3D(-3.16029e-08, 0, -0.722989, 0, 0.722989, 0, 0.722989, 0, -3.16029e-08, -7.51383, 1.42524, 18.0472)
-
-[node name="stove" parent="StaticObjects" instance=ExtResource("11_evacu")]
-transform = Transform3D(-2.51014e-08, 0, 0.574251, 0, 0.574251, 0, -0.574251, 0, -2.51014e-08, -13.4788, 1.36176, 17.8802)
-
-[node name="table1" parent="StaticObjects" instance=ExtResource("12_3xxv4")]
-transform = Transform3D(-2.87149e-08, 0, 0.65692, 0, 0.65692, 0, -0.65692, 0, -2.87149e-08, -5.85422, 1.9239, 5.7929)
-
-[node name="chair1" parent="StaticObjects" instance=ExtResource("13_1uwjb")]
-transform = Transform3D(-6.58749e-08, 0, -1.50704, 0, 1.50704, 0, 1.50704, 0, -6.58749e-08, -6.74498, 0.942955, 5.16813)
-
-[node name="chair4" parent="StaticObjects" instance=ExtResource("13_1uwjb")]
-transform = Transform3D(1.99241e-07, 0, 1.51937, 0, 1.51937, 0, -1.51937, 0, 1.99241e-07, -4.08367, 0.942955, 7.21537)
-
-[node name="chair3" parent="StaticObjects" instance=ExtResource("13_1uwjb")]
-transform = Transform3D(0.175227, 0, 1.49682, 0, 1.50704, 0, -1.49682, 0, 0.175227, -4.68911, 0.942955, 5.16813)
-
-[node name="chair2" parent="StaticObjects" instance=ExtResource("13_1uwjb")]
-transform = Transform3D(-0.222399, 0.00218534, -1.49054, 0.00328665, 1.50704, 0.00171912, 1.49054, -0.00299695, -0.222403, -7.05342, 0.942955, 6.77575)
-
-[node name="Refrigirator" parent="StaticObjects" instance=ExtResource("22_ru1qj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.2688, 2.86542, 14.0259)
-
-[node name="bathsink" parent="StaticObjects" instance=ExtResource("23_kfxll")]
-transform = Transform3D(-1.31134e-08, 0, -0.3, 0, 0.3, 0, 0.3, 0, -1.31134e-08, 10.2443, 2.23893, 12.9341)
-
-[node name="trashbin" parent="StaticObjects" instance=ExtResource("15_1vtxv")]
-transform = Transform3D(0.321631, 0, 0, 0, 0.321631, 0, 0, 0, 0.321631, 10.63, 0.634, 18.4936)
-
-[node name="washingmachine" parent="StaticObjects" instance=ExtResource("16_u4615")]
-transform = Transform3D(-2.7979e-08, 0, 0.640086, 0, 0.640086, 0, -0.640086, 0, -2.7979e-08, -1.28309, 1.38559, 17.3053)
-
-[node name="boxshower" parent="StaticObjects" instance=ExtResource("26_igbdl")]
-transform = Transform3D(-1.43992e-08, 0, 0.329416, 0, 0.329416, 0, -0.329416, 0, -1.43992e-08, 13.3423, 2.06514, 18.3404)
+[node name="StaticObjects" parent="." instance=ExtResource("4_38u8j")]
 
 [node name="FrontDoor" parent="." instance=ExtResource("14_fmsaw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0133, 2.33402, -9.51223)
@@ -141,11 +73,12 @@ visible = false
 [node name="Door2" parent="FrontDoor" instance=ExtResource("15_r8xxa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0189686, -0.407422, -0.33726)
 
-[node name="CollisionShape3D" parent="FrontDoor/Door2" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0480042, 0.617081, 0.167236)
-
-[node name="StartInnerMonologue" parent="FrontDoor/Door2" index="1"]
+[node name="StartInnerMonologue" parent="FrontDoor/Door2" index="0"]
 myDialogue = "I should eat something first"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FrontDoor/Door2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.26416, 0.666077, 0.383789)
+shape = SubResource("BoxShape3D_v7afa")
 
 [node name="apple" parent="." instance=ExtResource("16_otvkh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02759, 2.13792, 6.77653)

@@ -10,6 +10,7 @@
 radius = 0.575716
 
 [node name="Bob" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1.62019, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Template" type="MeshInstance3D" parent="."]
 mesh = SubResource("CapsuleMesh_2mcw0")

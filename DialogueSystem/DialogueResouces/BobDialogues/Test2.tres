@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_ptuag")
 Pages = Array[Dictionary]([{
-"Bob": "Go nigga"
+"Bob": "Go"
 }])

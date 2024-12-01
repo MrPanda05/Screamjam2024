@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfy3jp3ps20dt"]
+[gd_scene load_steps=3 format=3 uid="uid://cfy3jp3ps20dt"]
 
 [ext_resource type="Script" path="res://UI/DialogueSystem/DialogueBox.cs" id="1_1qey3"]
+[ext_resource type="Theme" uid="uid://c01fli1h1ltoy" path="res://UI/Themes/LabelTheme.tres" id="2_wyiur"]
 
 [node name="DialogueBox" type="Control" node_paths=PackedStringArray("_dialogueLabel", "_whoLabel")]
 layout_mode = 3
@@ -26,6 +27,7 @@ offset_top = -134.0
 offset_right = 575.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("2_wyiur")
 text = "Holly shit"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -34,6 +36,7 @@ vertical_alignment = 1
 layout_mode = 1
 offset_right = 130.0
 offset_bottom = 23.0
+theme = ExtResource("2_wyiur")
 text = "Bob"
 horizontal_alignment = 1
 vertical_alignment = 1

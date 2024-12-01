@@ -3,6 +3,7 @@ using FishingMiniGame.DayPool;
 using Godot;
 using LePlayer;
 using System;
+using System.Collections.Generic;
 
 namespace Commons.Managers
 {
@@ -14,6 +15,16 @@ namespace Commons.Managers
         public static Action<GameState> OnGameStateChange;
 
         private Node3D _currentActiveScene;
+
+        public List<string> dayName = new List<string> { "res://Levels/DaysLevels/Day2/HouseDay2.tscn", "res://Levels/DaysLevels/Day3/HouseDay3.tscn", "null" };
+        private int _currentIndex = 0;
+
+        public string GetNextDayScene()
+        {
+            var temp = dayName[_currentIndex];
+            _currentIndex++;
+            return temp;
+        }
 
         public override void _Ready()
         {
