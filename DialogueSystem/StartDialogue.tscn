@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://clpbr17usfnw3"]
 
 [ext_resource type="Script" path="res://DialogueSystem/StartDialogue.cs" id="1_m850d"]
-[ext_resource type="Resource" uid="uid://cs2p8sd8ls2re" path="res://DialogueSystem/DialogueResouces/BobDialogues/TestDialogue.tres" id="2_xccj3"]
+[ext_resource type="Resource" uid="uid://cs2p8sd8ls2re" path="res://DialogueSystem/DialogueResouces/BobDialogues/D1BobDialogue1.tres" id="2_xccj3"]
 
 [node name="StartDialogue" type="Node3D"]
 editor_description = "Start NPC dialogue with player

@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://mogdks8gavqv"]
+[gd_scene load_steps=4 format=3 uid="uid://mogdks8gavqv"]
 
 [ext_resource type="PackedScene" uid="uid://cdgvddlg0sy7c" path="res://Models/ModelsFBX/festivalTableComplete.fbx" id="1_gcsl4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v5wvj"]
 size = Vector3(2.16968, 2.50098, 7.93201)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_ksb2m"]
+size = Vector3(2.23201, 2.08929, 7.98609)
 
 [node name="festivalTableComplete" instance=ExtResource("1_gcsl4")]
 transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, 0, 0, 0)
@@ -21,3 +24,7 @@ text = "
 "
 font_size = 147
 outline_size = 37
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.04766, 0)
+occluder = SubResource("BoxOccluder3D_ksb2m")

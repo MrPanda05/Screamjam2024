@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://b742b3pvl7uyw"]
+[gd_scene load_steps=3 format=3 uid="uid://b742b3pvl7uyw"]
 
 [ext_resource type="PackedScene" uid="uid://o2ja6502fkny" path="res://Models/ModelsFBX/woodplank.fbx" id="1_l038c"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6ckhx"]
+size = Vector3(0.588867, 0.0556641, 2.98938)
 
 [node name="woodplank" instance=ExtResource("1_l038c")]
 transform = Transform3D(1.44, 0, 0, 0, 1, 0, 0, 0, 2.389, 0, 0, 0)
@@ -8,3 +11,10 @@ transform = Transform3D(1.44, 0, 0, 0, 1, 0, 0, 0, 2.389, 0, 0, 0)
 [node name="Text" type="Label3D" parent="." index="1"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 3.82137e-15, 4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0.0483237, 0)
 font_size = 67
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00244138, -0.00439453, -0.00384529)
+shape = SubResource("BoxShape3D_6ckhx")

@@ -11,8 +11,8 @@ namespace InteractSystem
     public partial class InteractableArea : Area3D
     {
         [Export]
-        private bool canRepeat;
-        private bool hasBeenUsed;
+        public bool canRepeat;
+        public bool hasBeenUsed;
         public bool CanBeInteractWith { get; private set; }
 
         public void DisableSelf()
@@ -34,6 +34,7 @@ namespace InteractSystem
         public void UpdateInteraction()
         {
             CanBeInteractWith = canRepeat || !hasBeenUsed;
+
             if (!CanBeInteractWith)
             {
                 DisableSelf();
@@ -52,10 +53,18 @@ namespace InteractSystem
                 }
             }
             hasBeenUsed = true;
+            UpdateInteraction();
         }
         public override void _Ready()
         {
             UpdateInteraction();
+        }
+        public override void _PhysicsProcess(double delta)
+        {
+            //GD.Print($"Can Repeat? {canRepeat}");
+            //GD.Print($"Has been used? {hasBeenUsed}");
+            //GD.Print($"Can interact? {CanBeInteractWith}");
+
         }
     }
 }

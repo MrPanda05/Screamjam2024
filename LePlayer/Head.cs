@@ -16,11 +16,13 @@ namespace LePlayer
 
         public void InteractWithObjects()
         {
-            if (_raycast.GetCollider() is InteractableArea area)
+            if (_raycast.GetCollider() is InteractableArea area && area.CanBeInteractWith)
             {
-
+                //GD.Print($"Can Repeat? {area.canRepeat}");
+                //GD.Print($"Has been used? {area.hasBeenUsed}");
+                //GD.Print($"Can interact? {area.CanBeInteractWith}");
                 _crosshair.Color = new Color(255, 0, 0);
-                if (Input.IsActionJustPressed("InteractButton") && area.CanBeInteractWith && area.Visible)
+                if (Input.IsActionJustPressed("InteractButton") && area.Visible)
                 {
                     area.InvokeInteractions();
                 }

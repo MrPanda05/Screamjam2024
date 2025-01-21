@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b10dinom8wgcu"]
+
+[ext_resource type="Texture2D" uid="uid://bg5n5x3rbh2pr" path="res://assets/textures/world/housewall.png" id="1_nyiqf"]
+
+[resource]
+albedo_texture = ExtResource("1_nyiqf")
+metallic_specular = 0.0
+texture_filter = 2

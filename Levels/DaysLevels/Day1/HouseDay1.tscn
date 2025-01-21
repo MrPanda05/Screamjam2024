@@ -46,7 +46,7 @@ shadow_enabled = true
 environment = SubResource("Environment_ksip5")
 
 [node name="Player" parent="." instance=ExtResource("2_e8m7a")]
-transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 6.07038, 6.71584, -3.9743)
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 6.07038, 5.98007, -3.9743)
 
 [node name="PlayerBaseHouse" parent="." instance=ExtResource("4_202ty")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

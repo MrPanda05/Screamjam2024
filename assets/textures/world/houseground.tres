@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://da6u1otkof7yk"]
+
+[ext_resource type="Texture2D" uid="uid://5xw35m8xw5hm" path="res://assets/textures/world/houseground.png" id="1_ra5j5"]
+
+[resource]
+albedo_texture = ExtResource("1_ra5j5")
+metallic_specular = 0.0
+texture_filter = 2

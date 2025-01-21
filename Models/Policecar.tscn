@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dufy3c47a3alr"]
+
+[ext_resource type="PackedScene" uid="uid://drah4irme6cpv" path="res://Models/ModelsFBX/policecar.fbx" id="1_bmys4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_es321"]
+size = Vector3(2.85345, 2.05835, 7.19141)
+
+[node name="policecar" instance=ExtResource("1_bmys4")]
+transform = Transform3D(1.442, 0, 0, 0, 1.442, 0, 0, 0, 1.442, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(0.999969, 0, 0, 0, 0.999969, 0, 0, 0, 0.999969, 0.00186357, 0.777696, 0.00584373)
+shape = SubResource("BoxShape3D_es321")

@@ -1,12 +1,61 @@
-[gd_scene load_steps=12 format=3 uid="uid://j4keqganh8p7"]
+[gd_scene load_steps=34 format=4 uid="uid://j4keqganh8p7"]
 
 [ext_resource type="Script" path="res://Levels/DaysLevels/Day3/FestivalDay3.cs" id="1_mkcsr"]
 [ext_resource type="PackedScene" uid="uid://dg451yda12u8a" path="res://Levels/FestivalBase.tscn" id="1_s0q5y"]
-[ext_resource type="PackedScene" uid="uid://bqcqx18c4v21u" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.tscn" id="3_iv7d6"]
+[ext_resource type="PackedScene" uid="uid://c27bsutmdur1v" path="res://Models/Table2.tscn" id="2_1psrk"]
+[ext_resource type="PackedScene" uid="uid://c6bs2m2dnyq3q" path="res://Models/FestivalTable.tscn" id="3_dpfdh"]
+[ext_resource type="PackedScene" uid="uid://b742b3pvl7uyw" path="res://Models/Woodplank.tscn" id="4_kmk05"]
 [ext_resource type="PackedScene" uid="uid://qm2vfivcif70" path="res://DialogueSystem/InnerMologueArea.tscn" id="4_rdrg7"]
+[ext_resource type="PackedScene" uid="uid://mogdks8gavqv" path="res://Models/FestivalTableComplete.tscn" id="5_pxcum"]
 [ext_resource type="PackedScene" uid="uid://bu8n55b43ksm" path="res://NPCs/Bob.tscn" id="5_s0xau"]
 [ext_resource type="Resource" uid="uid://caqmocx2lopjh" path="res://DialogueSystem/DialogueResouces/BobDialogues/D3BobDialogue1.tres" id="6_1dpkb"]
+[ext_resource type="PackedScene" uid="uid://dmiov0f3xm2ii" path="res://Models/Car1.tscn" id="6_j7r77"]
 [ext_resource type="Script" path="res://Commons/IEndDisableObjects.cs" id="7_tjfy4"]
+[ext_resource type="PackedScene" uid="uid://8u0qb4duxksr" path="res://Models/Basket2.tscn" id="7_w15qd"]
+[ext_resource type="PackedScene" uid="uid://c0yqqdpukp0h8" path="res://Models/Basket.tscn" id="8_ghjfl"]
+[ext_resource type="PackedScene" uid="uid://n2nhftkscw5k" path="res://Models/Trashbin.tscn" id="9_nhqcu"]
+[ext_resource type="PackedScene" uid="uid://b2hg0mgy0pwi1" path="res://Models/Car2.tscn" id="10_lqj5p"]
+[ext_resource type="PackedScene" uid="uid://chh5qams4y32f" path="res://Models/Car3.tscn" id="11_lgjpt"]
+[ext_resource type="PackedScene" uid="uid://cv71t2adhnr2m" path="res://Models/Car4.tscn" id="12_48hhn"]
+[ext_resource type="PackedScene" uid="uid://cd6wc3r3lqw5e" path="res://InteractionSystem/InteractableArea.tscn" id="14_w1522"]
+[ext_resource type="Script" path="res://InteractionSystem/InteractablesScrips/TriggerChangeScene.cs" id="15_rde7m"]
+[ext_resource type="PackedScene" uid="uid://belqv623htmui" path="res://LePlayer/Player.tscn" id="16_5aqi0"]
+[ext_resource type="PackedScene" uid="uid://dufy3c47a3alr" path="res://Models/Policecar.tscn" id="21_axmvq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vn617"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_ykx45"]
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.01, 0.02, 0.02, 0.02),
+"format": 34359742465,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAAAAMAAwAFAAQABgAEAAUABQAHAAYAAQAGAAcABwACAAEABwAFAAMAAwACAAcACAAAAAQABAAJAAgACgAJAAsACwAMAAoACQAEAAYABgALAAkADQABAAAAAAAIAA0ACwAGAAEAAQANAAsADgAPAAoACgAMAA4ADgANAAgACAAPAA4ADAALAA0ADQAOAAwADwAIAAkACQAKAA8A"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 16,
+"vertex_data": PackedByteArray("CtcjvArXIzwK1yM8CtcjvArXI7wK1yM8CtcjvArXI7wK1yO8CtcjvArXIzwK1yO8CtcjPArXIzwK1yM8CtcjPArXIzwK1yO8CtcjPArXI7wK1yM8CtcjPArXI7wK1yO86r4IvOq+CDwK1yM86r4IPOq+CDwK1yM86r4IPOq+CDz3HSG86r4IPOq+CLwK1yM86r4IPOq+CLz3HSG86r4IvOq+CLwK1yM86r4IvOq+CLz3HSG86r4IvOq+CDz3HSG8")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_mylbq"]
+resource_name = "Cube_001"
+_surfaces = [{
+"aabb": AABB(-0.01, -0.01, -0.01, 0.02, 0.02, 0.02),
+"attribute_data": PackedByteArray("AAAgPwAAQD8AACA/AACAPwAAwD4AAIA/AADAPgAAQD8AACA/AAAAPwAAID8AAEA/AADAPgAAQD8AAMA+AAAAPwAAID8AAIA+AAAgPwAAAD8AAMA+AAAAPwAAwD4AAIA+AAAgPwAAAAAAACA/AACAPgAAwD4AAIA+AADAPgAAAAAAAMA+AACAPgAAwD4AAAA/AAAAPgAAAD8AAAA+AACAPgAAID8AAEA/AAAgPwAAQD8AACA/AAAAPwAAID8AAAA/AAAgPwAAAD8AACA/AAAAPwAAID8AAIA+AAAgPwAAgD4AACA/AAAAPwAAID8AAAA/AAAgPwAAgD4AACA/AACAPgAAID8AAIA/AAAgPwAAgD8AACA/AABAPwAAID8AAEA/AAAgPwAAgD4AACA/AACAPgAAID8AAAAAAAAgPwAAAAAAAGA/AACAPgAAYD8AAAA/AAAgPwAAAD8AACA/AACAPgAAID8AAIA/AAAgPwAAgD8AACA/AABAPwAAID8AAEA/AAAgPwAAgD4AACA/AACAPgAAID8AAAAAAAAgPwAAAAAAACA/AABAPwAAID8AAEA/AAAgPwAAAD8AACA/AAAAPw=="),
+"format": 34359742487,
+"index_count": 84,
+"index_data": PackedByteArray("AAABAAIAAgADAAAABAAFAAYABgAHAAQACAAJAAoACgALAAgADAANAA4ADgAPAAwAEAARABIAEgATABAAFAAVABYAFgAXABQAGAAZABoAGgAbABgAHAAdAB4AHgAfABwAIAAhACIAIgAjACAAJAAlACYAJgAnACQAKAApACoAKgArACgALAAtAC4ALgAvACwAMAAxADIAMgAzADAANAA1ADYANgA3ADQA"),
+"material": SubResource("StandardMaterial3D_vn617"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 56,
+"vertex_data": PackedByteArray("CtcjvArXIzwK1yM8CtcjvArXI7wK1yM8CtcjvArXI7wK1yO8CtcjvArXIzwK1yO8CtcjPArXIzwK1yM8CtcjvArXIzwK1yM8CtcjvArXIzwK1yO8CtcjPArXIzwK1yO8CtcjPArXI7wK1yM8CtcjPArXIzwK1yM8CtcjPArXIzwK1yO8CtcjPArXI7wK1yO8CtcjvArXI7wK1yM8CtcjPArXI7wK1yM8CtcjPArXI7wK1yO8CtcjvArXI7wK1yO8CtcjPArXI7wK1yO8CtcjPArXIzwK1yO8CtcjvArXIzwK1yO8CtcjvArXI7wK1yO86r4IvOq+CDwK1yM8CtcjvArXIzwK1yM8CtcjPArXIzwK1yM86r4IPOq+CDwK1yM86r4IPOq+CDz3HSG86r4IPOq+CDwK1yM86r4IPOq+CLwK1yM86r4IPOq+CLz3HSG86r4IPOq+CDwK1yM8CtcjPArXIzwK1yM8CtcjPArXI7wK1yM86r4IPOq+CLwK1yM86r4IvOq+CLwK1yM8CtcjvArXI7wK1yM8CtcjvArXIzwK1yM86r4IvOq+CDwK1yM86r4IPOq+CLwK1yM8CtcjPArXI7wK1yM8CtcjvArXI7wK1yM86r4IvOq+CLwK1yM86r4IvOq+CLz3HSG86r4IvOq+CDz3HSG86r4IPOq+CDz3HSG86r4IPOq+CLz3HSG86r4IvOq+CLz3HSG86r4IvOq+CLwK1yM86r4IvOq+CDwK1yM86r4IvOq+CDz3HSG86r4IPOq+CLz3HSG86r4IPOq+CLwK1yM86r4IvOq+CLwK1yM86r4IvOq+CLz3HSG86r4IvOq+CDz3HSG86r4IvOq+CDwK1yM86r4IPOq+CDwK1yM86r4IPOq+CDz3HSG8AAD/f/9//78AAP9//3//vwAA/3//f/+/AAD/f/9//7//f////3//v/9/////f/+//3////9//7//f////3//v////3//f/+/////f/9//7////9//3//v////3//f/+//38AAP9//7//fwAA/3//v/9/AAD/f/+//38AAP9//7//////////v/////////+//////////7//////////v/9//3////8//3//f////z//f/9/////P/9//3////8/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/////P/9//3////8//3//f////z//f/9/AAD/v/9//38AAP+//3//fwAA/7//f/9/AAD/v////3////+/////f////7////9/////v////3////+//3///////7//f///////v/9///////+//3///////7//fwAA////v/9/AAD///+//38AAP///7//fwAA////vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_ykx45")
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_l2hk1"]
+size = Vector3(1, 0.291482, 1.4104)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_738r5"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -21,12 +70,149 @@ sky = SubResource("Sky_32t0m")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rp002"]
+size = Vector3(10.1817, 3.49304, 5.15869)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7o2p4"]
+albedo_color = Color(0.400505, 0.000110412, 0.400502, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_so3bm"]
+material = SubResource("StandardMaterial3D_7o2p4")
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_aadtq"]
-size = Vector3(1.35962, 1.13684, 1.55371)
+size = Vector3(14.3829, 4.43085, 10.1439)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1d43m"]
+size = Vector3(5.15381, 4.91309, 10.0233)
 
 [node name="FestivalDay3" type="Node3D" node_paths=PackedStringArray("_spawnpoint")]
 script = ExtResource("1_mkcsr")
 _spawnpoint = NodePath("Spawnpoint")
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Tents" type="Node3D" parent="Objects"]
+
+[node name="table2" parent="Objects/Tents" instance=ExtResource("2_1psrk")]
+transform = Transform3D(-1.29459, 0.00122585, 0.0536257, 0.00118561, 1.2957, -0.000996896, -0.0536267, -0.000946967, -1.29459, 6.63251, 2.42135, 10.4379)
+
+[node name="festivalTable" parent="Objects/Tents" instance=ExtResource("3_dpfdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.75273, 2.51895, 4.57867)
+
+[node name="woodplank" parent="Objects/Tents" instance=ExtResource("4_kmk05")]
+transform = Transform3D(-7.93226e-08, -1.81469, 0, -1.81469, 7.93226e-08, 1.58645e-07, -1.58645e-07, 6.93461e-15, -1.81469, 5.61294, 2.00938, 4.75797)
+
+[node name="Text" parent="Objects/Tents/woodplank" index="1"]
+text = "Tacos"
+
+[node name="woodplank2" parent="Objects/Tents" instance=ExtResource("4_kmk05")]
+transform = Transform3D(-6.05285e-08, -1.38473, 0, -1.38473, 6.05285e-08, 1.21057e-07, -1.21057e-07, 5.29158e-15, -1.38473, -13.2278, 2.15946, 14.2147)
+
+[node name="Text" parent="Objects/Tents/woodplank2" index="1"]
+transform = Transform3D(1.31134e-07, -1, -4.37113e-08, -8.74228e-08, 4.37113e-08, -1, 1, 1.31134e-07, -8.74228e-08, 0, -0.0444307, 0)
+text = "Sweets"
+
+[node name="festivalTableComplete" parent="Objects/Tents" instance=ExtResource("5_pxcum")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -13.443, 2.29906, -0.958196)
+
+[node name="TentLabel" parent="Objects/Tents/festivalTableComplete" index="2"]
+text = "Veggies
+"
+
+[node name="festivalTableComplete2" parent="Objects/Tents" instance=ExtResource("5_pxcum")]
+transform = Transform3D(-0.9, 0, -7.86805e-08, 0, 0.9, 0, 7.86805e-08, 0, -0.9, 6.00819, 2.41341, -7.30473)
+
+[node name="TentLabel" parent="Objects/Tents/festivalTableComplete2" index="2"]
+text = "Fresh fruits"
+
+[node name="festivalTableComplete3" parent="Objects/Tents" instance=ExtResource("5_pxcum")]
+transform = Transform3D(-3.93403e-08, 0, 0.9, 0, 0.9, 0, -0.9, 0, -3.93403e-08, -4.80581, 2.30695, 29.7927)
+
+[node name="TentLabel" parent="Objects/Tents/festivalTableComplete3" index="2"]
+text = "Fish on a Fish"
+
+[node name="car1" parent="Objects" instance=ExtResource("6_j7r77")]
+transform = Transform3D(-6.11959e-08, 0, 1.4, 0, 1.4, 0, -1.4, 0, -6.11959e-08, -18.9479, 3.35273, -17.8034)
+
+[node name="festivalTable" parent="Objects" instance=ExtResource("3_dpfdh")]
+transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -14.244, 2.34348, 14.5804)
+
+[node name="basket2" parent="Objects" instance=ExtResource("7_w15qd")]
+transform = Transform3D(0.642558, 0, 0, 0, 0.642558, 0, 0, 0, 0.642558, 5.98559, 0.97355, -3.12345)
+
+[node name="basket" parent="Objects" instance=ExtResource("8_ghjfl")]
+transform = Transform3D(0.987483, 0, 0.157727, 0, 1, 0, -0.157727, 0, 0.987483, 5.92338, 2.66097, -7.81415)
+
+[node name="basket3" parent="Objects" instance=ExtResource("8_ghjfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.92338, 2.66097, -5.02808)
+
+[node name="basket4" parent="Objects" instance=ExtResource("8_ghjfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.10331, 2.54169, 29.9902)
+
+[node name="basket9" parent="Objects" instance=ExtResource("8_ghjfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.91418, 2.54169, 29.9902)
+
+[node name="basket5" parent="Objects" instance=ExtResource("7_w15qd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.60573, 1.40059, 29.6287)
+
+[node name="basket6" parent="Objects" instance=ExtResource("8_ghjfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.0379, 2.55374, -0.638399)
+
+[node name="basket7" type="Node3D" parent="Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7859, 2.58177, 17.4778)
+
+[node name="basket" type="MeshInstance3D" parent="Objects/basket7"]
+transform = Transform3D(50, 0, 0, 0, -8.34465e-06, 15, 0, -70, -1.78814e-06, 0, 0, 0)
+mesh = SubResource("ArrayMesh_mylbq")
+skeleton = NodePath("")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Objects/basket7"]
+occluder = SubResource("BoxOccluder3D_l2hk1")
+
+[node name="basket8" parent="Objects" instance=ExtResource("7_w15qd")]
+transform = Transform3D(0.66489, 0, 0.116508, 0, 0.67502, 0, -0.116508, 0, 0.66489, -14.1584, 1.10082, 19.1324)
+
+[node name="trashbin" parent="Objects" instance=ExtResource("9_nhqcu")]
+transform = Transform3D(0.576169, 0, 0, 0, 0.576169, 0, 0, 0, 0.576169, -13.7279, 1.10017, -5.28678)
+
+[node name="trashbin3" parent="Objects" instance=ExtResource("9_nhqcu")]
+transform = Transform3D(0.576169, 0, 0, 0, 0.576169, 0, 0, 0, 0.576169, -15.2288, 1.10017, 10.9724)
+
+[node name="trashbin2" parent="Objects" instance=ExtResource("9_nhqcu")]
+transform = Transform3D(0.482382, 0, 0, 0, 0.482382, 0, 0, 0, 0.482382, 5.51171, 1.02424, -11.3882)
+
+[node name="trashbin4" parent="Objects" instance=ExtResource("9_nhqcu")]
+transform = Transform3D(0.482382, 0, 0, 0, 0.482382, 0, 0, 0, 0.482382, 7.22858, 1.02424, 0.362344)
+
+[node name="trashbin5" parent="Objects" instance=ExtResource("9_nhqcu")]
+transform = Transform3D(0.482382, 0, 0, 0, 0.482382, 0, 0, 0, 0.482382, -1.07158, 1.02424, 30.1421)
+
+[node name="car2" parent="Objects" instance=ExtResource("10_lqj5p")]
+transform = Transform3D(-6.11959e-08, 0, 1.4, 0, 1.4, 0, -1.4, 0, -6.11959e-08, -18.4417, 3.31037, -25.0714)
+
+[node name="car3" parent="Objects" instance=ExtResource("11_lgjpt")]
+transform = Transform3D(-3.0598e-07, 0, -1.4, 0, 1.4, 0, 1.4, 0, -3.0598e-07, 10.233, 3.33032, -38.3085)
+
+[node name="table2" parent="Objects" instance=ExtResource("2_1psrk")]
+transform = Transform3D(0.657268, 0, -1.00399, 0, 1.2, 0, 1.00399, 0, 0.657268, -10.0876, 2.23016, 29.7538)
+
+[node name="basket10" parent="Objects" instance=ExtResource("8_ghjfl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.65339, 2.75767, 7.8098)
+
+[node name="basket11" parent="Objects" instance=ExtResource("8_ghjfl")]
+transform = Transform3D(0.991225, 0, 0.132187, 0, 1, 0, -0.132187, 0, 0.991225, 6.65339, 2.75767, 1.81127)
+
+[node name="car4" parent="Objects" instance=ExtResource("12_48hhn")]
+transform = Transform3D(1.39633, 0, 0.101266, 0, 1.4, 0, -0.101266, 0, 1.39633, -19.0028, 3.26287, -36.0023)
+
+[node name="policecar" parent="Objects" instance=ExtResource("21_axmvq")]
+transform = Transform3D(-6.30318e-08, 0, -1.442, 0, 1.442, 0, 1.442, 0, -6.30318e-08, 10.623, 1.88029, -29.2583)
+
+[node name="policecar2" parent="Objects" instance=ExtResource("21_axmvq")]
+transform = Transform3D(-0.0400115, 0, -1.44144, 0, 1.442, 0, 1.44144, 0, -0.0400115, 10.623, 1.88029, -22.8883)
+
+[node name="policecar3" parent="Objects" instance=ExtResource("21_axmvq")]
+transform = Transform3D(0.0318596, 0, -1.44165, 0, 1.442, 0, 1.44165, 0, 0.0318596, 10.623, 1.88029, -17.4406)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -38,27 +224,38 @@ environment = SubResource("Environment_uylqt")
 [node name="FestivalBase" parent="." instance=ExtResource("1_s0q5y")]
 
 [node name="Spawnpoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.52636, 3.80233, -37.0009)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.92163, 3.80233, -32.3193)
 
-[node name="TriggerChangeScene" parent="." instance=ExtResource("3_iv7d6")]
+[node name="TriggerChangeScene" type="Node3D" parent="."]
 process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.29004, 1.40615, -39.5367)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.89577, 3.67717, -36.3406)
+metadata/_edit_group_ = true
 
-[node name="TriggerScenChange" parent="TriggerChangeScene/InteractableArea" index="1"]
+[node name="InteractableArea" parent="TriggerChangeScene" instance=ExtResource("14_w1522")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerChangeScene/InteractableArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11435, -0.260803, -2.07935)
+shape = SubResource("BoxShape3D_rp002")
+
+[node name="TriggerScenChange" type="Node3D" parent="TriggerChangeScene/InteractableArea"]
+script = ExtResource("15_rde7m")
 path = "res://Levels/FishingSpot.tscn"
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TriggerChangeScene"]
+mesh = SubResource("BoxMesh_so3bm")
+
 [node name="InnerMonologueArea" parent="." instance=ExtResource("4_rdrg7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.32862, 1.28871, -39.6443)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.52089, 1.28871, -39.6443)
 
 [node name="StartInnerMonologue" parent="InnerMonologueArea" index="0"]
 myDialogue = "I should see bob"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InnerMonologueArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0123291, 0.0684204, -0.133301)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.48187, 1.71542, -1.47952)
 shape = SubResource("BoxShape3D_aadtq")
 
 [node name="Bob" parent="." instance=ExtResource("5_s0xau")]
-transform = Transform3D(1, 0, 0, 0, 1.62019, 0, 0, 0, 1, -3.31881, 2.10779, 32.9154)
+transform = Transform3D(1, 0, 0, 0, 1.62019, 0, 0, 0, 1, -4.64552, 2.10779, 31.3087)
 
 [node name="StartDialogue" parent="Bob/InteractableArea" index="1"]
 MyDialogue = ExtResource("6_1dpkb")
@@ -72,7 +269,25 @@ _processMode = 4
 script = ExtResource("7_tjfy4")
 _myObject = NodePath("../../../../../TriggerChangeScene")
 
-[editable path="TriggerChangeScene"]
+[node name="Player" parent="." instance=ExtResource("16_5aqi0")]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, -9.28569, 3.53512, -34.2744)
+
+[node name="InnerMonologueArea2" parent="." instance=ExtResource("4_rdrg7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0517, 0.500001, -37.3375)
+
+[node name="StartInnerMonologue" parent="InnerMonologueArea2" index="0"]
+myDialogue = "Ok... that is just plain retarded"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerMonologueArea2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96404, 1.95654, 1.88715)
+shape = SubResource("BoxShape3D_1d43m")
+
+[editable path="Objects/Tents/woodplank"]
+[editable path="Objects/Tents/woodplank2"]
+[editable path="Objects/Tents/festivalTableComplete"]
+[editable path="Objects/Tents/festivalTableComplete2"]
+[editable path="Objects/Tents/festivalTableComplete3"]
 [editable path="InnerMonologueArea"]
 [editable path="Bob"]
 [editable path="Bob/InteractableArea"]
+[editable path="InnerMonologueArea2"]

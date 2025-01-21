@@ -1,5 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://c0yqqdpukp0h8"]
+[gd_scene load_steps=4 format=3 uid="uid://c0yqqdpukp0h8"]
 
 [ext_resource type="PackedScene" uid="uid://dra2yefc75oon" path="res://Models/ModelsFBX/basket.fbx" id="1_jja44"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_uik6h"]
+size = Vector3(1.00781, 0.300781, 1.39636)
+
+[sub_resource type="BoxOccluder3D" id="BoxOccluder3D_l2hk1"]
+size = Vector3(1, 0.291482, 1.4104)
+
 [node name="basket" instance=ExtResource("1_jja44")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00390625, 0, -0.00250244)
+shape = SubResource("BoxShape3D_uik6h")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="2"]
+occluder = SubResource("BoxOccluder3D_l2hk1")
