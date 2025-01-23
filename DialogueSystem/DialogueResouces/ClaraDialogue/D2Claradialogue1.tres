@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="DialogueResource" load_steps=2 format=3 uid="uid://v77m4ndathqh"]
-
-[ext_resource type="Script" path="res://DialogueSystem/DialogueResouces/DialogueResource.cs" id="1_ttmgi"]
-
-[resource]
-script = ExtResource("1_ttmgi")
-Pages = Array[Dictionary]([{
-"Clara": "Hello, I am waiting for my grandson to come with new fresh vegetables"
-}])

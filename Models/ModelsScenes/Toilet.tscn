@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8sql0jfip8a7"]
+
+[ext_resource type="PackedScene" uid="uid://bfq5qaueos4hj" path="res://Models/ModelsFBX/toilet.fbx" id="1_6drko"]
+[ext_resource type="ArrayOccluder3D" uid="uid://bulmf21jwlwvb" path="res://Models/ModelsScenes/Toilet.occ" id="2_l0jt3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_owo6v"]
+size = Vector3(1, 1.07825, 1.6543)
+
+[node name="toilet" instance=ExtResource("1_6drko")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+occluder = ExtResource("2_l0jt3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.234436, 0.309326)
+shape = SubResource("BoxShape3D_owo6v")

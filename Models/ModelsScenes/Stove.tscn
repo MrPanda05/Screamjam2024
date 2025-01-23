@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c84tfsts1vklk"]
+
+[ext_resource type="PackedScene" uid="uid://b01eyy0n8qgak" path="res://Models/ModelsFBX/stove.fbx" id="1_mrnjb"]
+[ext_resource type="ArrayOccluder3D" uid="uid://drfqihsfi4y1f" path="res://Models/ModelsScenes/Stove.occ" id="2_jwpkt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4tkug"]
+size = Vector3(3.40015, 3.88745, 3.87744)
+
+[node name="stove" instance=ExtResource("1_mrnjb")]
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.22113, 0)
+occluder = ExtResource("2_jwpkt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="2"]
+collision_layer = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0152588, -0.00500488, 0.0100098)
+shape = SubResource("BoxShape3D_4tkug")

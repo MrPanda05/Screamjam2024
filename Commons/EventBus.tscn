@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dw4ahqngw4xmi"]
-
-[ext_resource type="Script" path="res://Commons/EventBus.cs" id="1_ipjr1"]
-
-[node name="EventBus" type="Node"]
-script = ExtResource("1_ipjr1")

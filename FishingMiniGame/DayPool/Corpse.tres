@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="FishPoolResource" load_steps=3 format=3 uid="uid://dok6y0bnrkief"]
-
-[ext_resource type="Resource" uid="uid://fbp5okqnvao0" path="res://FishingMiniGame/Fishes/Other.tres" id="1_54ng6"]
-[ext_resource type="Script" path="res://FishingMiniGame/DayPool/FishPoolResource.cs" id="1_y2g60"]
-
-[resource]
-script = ExtResource("1_y2g60")
-LeFishResources = Array[Object]([ExtResource("1_54ng6")])
-Name = "Corpse"

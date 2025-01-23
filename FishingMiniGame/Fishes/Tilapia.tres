@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="FishResource" load_steps=2 format=3 uid="uid://c7uve1o44fc7b"]
-
-[ext_resource type="Script" path="res://FishingMiniGame/Fishes/FishResource.cs" id="1_xmuut"]
-
-[resource]
-resource_local_to_scene = true
-script = ExtResource("1_xmuut")
-fishType = 1

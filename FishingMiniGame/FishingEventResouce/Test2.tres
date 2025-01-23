@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="TestFishingEvent" load_steps=2 format=3 uid="uid://ct5wveqyrri7m"]
-
-[ext_resource type="Script" path="res://FishingMiniGame/FishingEventResouce/TestFishingEvent.cs" id="1_3os1o"]
-
-[resource]
-script = ExtResource("1_3os1o")

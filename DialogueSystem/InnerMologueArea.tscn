@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://qm2vfivcif70"]
-
-[ext_resource type="PackedScene" uid="uid://cd6wc3r3lqw5e" path="res://InteractionSystem/InteractableArea.tscn" id="1_khf50"]
-[ext_resource type="PackedScene" uid="uid://blrovxh5slk8q" path="res://DialogueSystem/StartInnerMonologue.tscn" id="2_hflh3"]
-
-[node name="InnerMonologueArea" instance=ExtResource("1_khf50")]
-
-[node name="StartInnerMonologue" parent="." index="0" instance=ExtResource("2_hflh3")]

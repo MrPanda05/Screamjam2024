@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="StopFishingEvent" load_steps=2 format=3 uid="uid://deehjmus8ovxt"]
-
-[ext_resource type="Script" path="res://FishingMiniGame/FishingEventResouce/StopFishingEvent.cs" id="1_uye7p"]
-
-[resource]
-script = ExtResource("1_uye7p")
-_maxFishCount = 10

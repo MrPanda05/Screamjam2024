@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://cxyerabhc3k5g"]
+
+[ext_resource type="Script" path="res://Commons/DialogueSystem/Dialogue.cs" id="1_vlfuy"]
+
+[resource]
+script = ExtResource("1_vlfuy")
+Author = "Bob"
+Text = "Stupid ninja"

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://blrovxh5slk8q"]
-
-[ext_resource type="Script" path="res://DialogueSystem/StartInnerMonologue.cs" id="1_mjfrw"]
-
-[node name="StartInnerMonologue" type="Node3D"]
-editor_description = "Start inner monologue for when player interacts with somethings"
-script = ExtResource("1_mjfrw")

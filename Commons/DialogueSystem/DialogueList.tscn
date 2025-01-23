@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://caipesegavby2"]
+
+[ext_resource type="Script" path="res://Commons/DialogueSystem/DialogueList.cs" id="1_d6np8"]
+
+[node name="DialogueList" type="Node"]
+script = ExtResource("1_d6np8")

@@ -1,0 +1,144 @@
+[gd_scene load_steps=20 format=3 uid="uid://2q3j2rbsfwd1"]
+
+[ext_resource type="Script" path="res://Commons/DialogueSystem/DialogueBox.cs" id="1_f6kx8"]
+[ext_resource type="PackedScene" uid="uid://dgvrxd8e3knde" path="res://Game/Player/LePlayer.tscn" id="1_qfq4l"]
+[ext_resource type="PackedScene" uid="uid://dapd2mcubprxc" path="res://Commons/InteractionSystem/InteractableArea.tscn" id="2_72rnc"]
+[ext_resource type="PackedScene" uid="uid://caipesegavby2" path="res://Commons/DialogueSystem/DialogueList.tscn" id="2_hb02l"]
+[ext_resource type="Script" path="res://Commons/InteractionSystem/Test/InteractionTest.cs" id="3_6x7rd"]
+[ext_resource type="Resource" uid="uid://cxyerabhc3k5g" path="res://Commons/DialogueSystem/Test/TestDialogue.tres" id="4_1i6sq"]
+[ext_resource type="Script" path="res://Commons/InteractionSystem/Test/InteractionTwo.cs" id="4_v70oa"]
+[ext_resource type="PackedScene" uid="uid://co8mi8i731ewy" path="res://Commons/TriggerSystem/TriggerArea.tscn" id="5_3c0tw"]
+[ext_resource type="Resource" uid="uid://cgrmew5nws0lh" path="res://Commons/DialogueSystem/Test/TestDialogue2.tres" id="5_i0p6t"]
+[ext_resource type="Script" path="res://Commons/TriggerSystem/Test/TestTrigger.cs" id="6_dw4k4"]
+[ext_resource type="Script" path="res://Commons/DialogueSystem/StartDialogue.cs" id="6_yoblp"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ghbfv"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_l8j02"]
+sky_material = SubResource("ProceduralSkyMaterial_ghbfv")
+
+[sub_resource type="Environment" id="Environment_80ais"]
+background_mode = 2
+sky = SubResource("Sky_l8j02")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_kpyut"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ci2fs"]
+size = Vector3(1.9978, 0.113403, 2.00244)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sujb4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6ghlk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_374ef"]
+size = Vector3(4.31726, 4.2085, 5.55594)
+
+[node name="TestScene" type="Node3D"]
+
+[node name="DialogueCanvas" type="CanvasLayer" parent="." groups=["DialogueCanvas"]]
+follow_viewport_enabled = true
+
+[node name="DialogueBox" type="Control" parent="DialogueCanvas" node_paths=PackedStringArray("_authorLabel", "_textLabel")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_f6kx8")
+_authorLabel = NodePath("DialogueText/Author")
+_textLabel = NodePath("DialogueText")
+
+[node name="DialogueText" type="Label" parent="DialogueCanvas/DialogueBox"]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -512.0
+offset_top = -200.0
+offset_right = 512.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "hel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Author" type="Label" parent="DialogueCanvas/DialogueBox/DialogueText"]
+layout_mode = 1
+offset_top = -40.0
+offset_right = 128.0
+offset_bottom = -1.0
+text = "sdfsd"
+horizontal_alignment = 1
+vertical_alignment = 1
+justification_flags = 162
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_80ais")
+
+[node name="Ground" type="MeshInstance3D" parent="."]
+transform = Transform3D(20.486, 0, 0, 0, 20.486, 0, 0, 0, 20.486, 0, 0, 0)
+mesh = SubResource("PlaneMesh_kpyut")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Ground"]
+collision_layer = 12
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00256354, -0.046814, -0.0158691)
+shape = SubResource("BoxShape3D_ci2fs")
+
+[node name="LePlayer" parent="." instance=ExtResource("1_qfq4l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.991846, 2.06019, 0.258414)
+_gravity = 15.0
+_jumpForce = 3.0
+_speed = 5.0
+
+[node name="TestInteraction" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3667, 0.68105, 5.37294)
+
+[node name="DialogueList" parent="TestInteraction" instance=ExtResource("2_hb02l")]
+_dialogues = [ExtResource("4_1i6sq"), ExtResource("5_i0p6t")]
+
+[node name="InteractableArea" parent="TestInteraction" instance=ExtResource("2_72rnc")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestInteraction/InteractableArea"]
+shape = SubResource("BoxShape3D_sujb4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestInteraction/InteractableArea"]
+mesh = SubResource("BoxMesh_6ghlk")
+
+[node name="InteractionTest" type="Node" parent="TestInteraction/InteractableArea"]
+script = ExtResource("3_6x7rd")
+
+[node name="InteractionTWO" type="Node" parent="TestInteraction/InteractableArea"]
+script = ExtResource("4_v70oa")
+
+[node name="DialogueStart" type="Node" parent="TestInteraction/InteractableArea" node_paths=PackedStringArray("_dialogueList")]
+script = ExtResource("6_yoblp")
+_dialogueList = NodePath("../../DialogueList")
+IsRepeatable = true
+
+[node name="TriggerArea" parent="." instance=ExtResource("5_3c0tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.29937, 0.202556, -7.32509)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65863, 1.60425, -0.411666)
+shape = SubResource("BoxShape3D_374ef")
+
+[node name="TestTrigger" type="Node3D" parent="TriggerArea"]
+script = ExtResource("6_dw4k4")
