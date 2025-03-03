@@ -45,7 +45,7 @@ namespace Commons.FiniteStateMachine
         public void ChangeState(string targetState)
         {
             if (!states.ContainsKey(targetState) || currentState == states[targetState]) return;
-            GD.Print("Entering " + targetState);
+            //GD.Print("Entering " + targetState);
             OnStateChangeTo?.Invoke(targetState);
             currentState.Exit();
             currentState = states[targetState];
@@ -56,12 +56,21 @@ namespace Commons.FiniteStateMachine
         {
             return currentState.Name;
         }
+        public State GetCurrentState()
+        {
+            return currentState;
+        }
         public void ForceNullState()
         {
             currentState.Exit();
             currentState = null;
             OnStateChangeTo?.Invoke("null");
             GD.PushWarning($"Object of type {GetParent().Name} is on a null state");
+        }
+
+        public override string ToString()
+        {
+            return "Finate State Machine";
         }
     }
 }

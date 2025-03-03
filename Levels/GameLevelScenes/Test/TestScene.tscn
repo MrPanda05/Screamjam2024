@@ -1,14 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://2q3j2rbsfwd1"]
+[gd_scene load_steps=22 format=3 uid="uid://2q3j2rbsfwd1"]
 
 [ext_resource type="Script" path="res://Commons/DialogueSystem/DialogueBox.cs" id="1_f6kx8"]
 [ext_resource type="PackedScene" uid="uid://dgvrxd8e3knde" path="res://Game/Player/LePlayer.tscn" id="1_qfq4l"]
 [ext_resource type="PackedScene" uid="uid://dapd2mcubprxc" path="res://Commons/InteractionSystem/InteractableArea.tscn" id="2_72rnc"]
 [ext_resource type="PackedScene" uid="uid://caipesegavby2" path="res://Commons/DialogueSystem/DialogueList.tscn" id="2_hb02l"]
+[ext_resource type="PackedScene" uid="uid://d35h5rc80u1e" path="res://Commons/DialogueSystem/ChangeDialogueOnEnd.tscn" id="3_1cvk5"]
 [ext_resource type="Script" path="res://Commons/InteractionSystem/Test/InteractionTest.cs" id="3_6x7rd"]
 [ext_resource type="Resource" uid="uid://cxyerabhc3k5g" path="res://Commons/DialogueSystem/Test/TestDialogue.tres" id="4_1i6sq"]
 [ext_resource type="Script" path="res://Commons/InteractionSystem/Test/InteractionTwo.cs" id="4_v70oa"]
 [ext_resource type="PackedScene" uid="uid://co8mi8i731ewy" path="res://Commons/TriggerSystem/TriggerArea.tscn" id="5_3c0tw"]
 [ext_resource type="Resource" uid="uid://cgrmew5nws0lh" path="res://Commons/DialogueSystem/Test/TestDialogue2.tres" id="5_i0p6t"]
+[ext_resource type="Resource" uid="uid://d3i5amaw7a81d" path="res://Commons/DialogueSystem/Test/TestDialogue3.tres" id="5_jgti2"]
 [ext_resource type="Script" path="res://Commons/TriggerSystem/Test/TestTrigger.cs" id="6_dw4k4"]
 [ext_resource type="Script" path="res://Commons/DialogueSystem/StartDialogue.cs" id="6_yoblp"]
 
@@ -70,7 +72,8 @@ offset_right = 512.0
 offset_bottom = -64.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "hel"
+text = "Hey bob
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -79,7 +82,7 @@ layout_mode = 1
 offset_top = -40.0
 offset_right = 128.0
 offset_bottom = -1.0
-text = "sdfsd"
+text = "You"
 horizontal_alignment = 1
 vertical_alignment = 1
 justification_flags = 162
@@ -112,9 +115,14 @@ _speed = 5.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3667, 0.68105, 5.37294)
 
 [node name="DialogueList" parent="TestInteraction" instance=ExtResource("2_hb02l")]
-_dialogues = [ExtResource("4_1i6sq"), ExtResource("5_i0p6t")]
+dialogues = [ExtResource("4_1i6sq"), ExtResource("5_i0p6t")]
+
+[node name="ChangeDialogueOnEnd" parent="TestInteraction/DialogueList" instance=ExtResource("3_1cvk5")]
+newDialogue = [ExtResource("5_jgti2")]
 
 [node name="InteractableArea" parent="TestInteraction" instance=ExtResource("2_72rnc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0134716, 2.38419e-07, 0.00201321)
+_disableForAshortTime = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TestInteraction/InteractableArea"]
 shape = SubResource("BoxShape3D_sujb4")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d35h5rc80u1e"]
+
+[ext_resource type="Script" path="res://Commons/DialogueSystem/ChangeDialogueOnEnd.cs" id="1_ulb13"]
+
+[node name="ChangeDialogueOnEnd" type="Node"]
+script = ExtResource("1_ulb13")

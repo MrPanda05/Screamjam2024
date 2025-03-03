@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Dialogue" load_steps=2 format=3 uid="uid://d3i5amaw7a81d"]
+
+[ext_resource type="Script" path="res://Commons/DialogueSystem/Dialogue.cs" id="1_x1e31"]
+
+[resource]
+script = ExtResource("1_x1e31")
+Author = "Bob"
+Text = "kys"

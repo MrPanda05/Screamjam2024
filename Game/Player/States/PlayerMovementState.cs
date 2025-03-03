@@ -1,4 +1,6 @@
+using Commons.DialogueSystem;
 using Commons.FiniteStateMachine;
+using Commons.Singletons;
 using Godot;
 using System;
 
@@ -11,20 +13,29 @@ namespace Game.Player.States
         {
             _player = GetParent().GetParent<LePlayer>();
         }
+        public void SwitchToDialogue(GameState gameState)
+        {
+            if(gameState == GameState.Dialogue)
+            {
+                _player.FiniteStateMachine.ChangeState("InDialogueState");
+            }
+        }
         public override void Enter()
         {
             _player.AllowMovement(true);
             _player.AllowMouseMovement(true);
-            _player.HeadNode.EnableInteraction();
             Input.MouseMode = Input.MouseModeEnum.Captured;
+            //DialogueBox.OnDialogueEnter += SwitchToDialogue;
+            GameManager.Instance.OnStateChangeTo += SwitchToDialogue;
+            _player.HeadNode.EnableInteraction();
         }
         public override void Exit()
         {
             _player.AllowMovement(false);
-            _player.HeadNode.DisableInteraction();
             _player.AllowMouseMovement(false);
-            Input.MouseMode = Input.MouseModeEnum.Visible;
-
+            //DialogueBox.OnDialogueEnter -= SwitchToDialogue;
+            GameManager.Instance.OnStateChangeTo -= SwitchToDialogue;
+            _player.HeadNode.DisableInteraction();
         }
         public override void FixUpdate(float delta)
         {

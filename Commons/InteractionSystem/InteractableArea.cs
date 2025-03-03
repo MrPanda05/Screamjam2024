@@ -9,6 +9,9 @@ namespace Commons.InteractionSystem
         public bool isRepeatable = true;
         [Export]
         public bool hasBeenUsed;
+        //Maybe change this
+        [Export]
+        private bool _disableForAshortTime;
         public bool CanBeInteractWith { get; private set; }
 
         public Action OnInteraction;
@@ -17,7 +20,7 @@ namespace Commons.InteractionSystem
             CanBeInteractWith = isRepeatable || !hasBeenUsed;
         }
 
-        public void InvokeInteract()
+        public async void InvokeInteract()
 		{
             if(!CanBeInteractWith) return;
 
@@ -36,6 +39,13 @@ namespace Commons.InteractionSystem
             hasBeenUsed = true;
             UpdateInteraction();
             OnInteraction?.Invoke();
+            if (_disableForAshortTime)
+            {
+                ProcessMode = ProcessModeEnum.Disabled;
+                await ToSignal(GetTree().CreateTimer(2f), Timer.SignalName.Timeout);
+                ProcessMode = ProcessModeEnum.Inherit;
+
+            }
         }
 
         public override void _Ready()

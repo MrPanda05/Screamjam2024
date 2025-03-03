@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgvrxd8e3knde"]
+[gd_scene load_steps=9 format=3 uid="uid://dgvrxd8e3knde"]
 
 [ext_resource type="Script" path="res://Game/Player/LePlayer.cs" id="1_52oj4"]
 [ext_resource type="Script" path="res://Game/Player/Head.cs" id="2_y71j6"]
 [ext_resource type="PackedScene" uid="uid://c8qd4wluh6kb7" path="res://Commons/FiniteStateMachine/FSM.tscn" id="3_8go6c"]
 [ext_resource type="Script" path="res://Game/Player/States/PlayerMovementState.cs" id="4_6jd7v"]
+[ext_resource type="Script" path="res://Game/Player/States/InDialogueState.cs" id="5_fcvij"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eed75"]
 
@@ -52,7 +53,10 @@ collision_mask = 16
 shape = SubResource("CapsuleShape3D_1qyb1")
 
 [node name="FSM" parent="." instance=ExtResource("3_8go6c")]
-InitialState = NodePath("PlayerMovement")
+InitialState = NodePath("PlayerMovementState")
 
-[node name="PlayerMovement" type="Node" parent="FSM"]
+[node name="PlayerMovementState" type="Node" parent="FSM"]
 script = ExtResource("4_6jd7v")
+
+[node name="InDialogueState" type="Node" parent="FSM"]
+script = ExtResource("5_fcvij")

@@ -39,7 +39,10 @@ namespace Game.Player
             _isSprinting = Input.IsActionPressed("Sprint");
             _direction = (HeadNode.GlobalTransform.Basis * new Vector3(_inputVector.X, 0, _inputVector.Y)).Normalized();
         }
-
+        /// <summary>
+        /// Camera rotation
+        /// </summary>
+        /// <param name="event"></param>
         public void CameraMovement(InputEvent @event)
         {
             if (!_isMouseAllowed) return;
@@ -52,7 +55,10 @@ namespace Game.Player
                 HeadNode.PlayerCamera.Rotation = camRot;
             }
         }
-
+        public State GetState()
+        {
+            return FiniteStateMachine.GetCurrentState();
+        }
         public void AllowMovement(bool value)
         {
             _permitMovement = value;
@@ -60,8 +66,12 @@ namespace Game.Player
         public void AllowMouseMovement(bool value)
         {
             _isMouseAllowed = value;
-        }   
+        }
 
+        /// <summary>
+        /// movement of the player
+        /// </summary>
+        /// <param name="delta"></param>
         private void Movement(float delta)
         {
             if (IsOnFloor())
@@ -87,6 +97,10 @@ namespace Game.Player
         {
             _vel.Y = _jumpForce;
         }
+        /// <summary>
+        /// Controls the physics of the player, moving, jumping, etc.
+        /// </summary>
+        /// <param name="delta"></param>
         public void Move(float delta)
         {
             if(!_permitMovement) return;

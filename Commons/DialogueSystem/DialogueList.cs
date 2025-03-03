@@ -1,5 +1,7 @@
+using Commons.InteractionSystem;
 using Godot;
 using Godot.Collections;
+using Microsoft.VisualBasic;
 using System;
 
 namespace Commons.DialogueSystem
@@ -7,22 +9,34 @@ namespace Commons.DialogueSystem
     public partial class DialogueList : Node
     {
         [Export]
-        public Array<Dialogue> _dialogues = new Array<Dialogue>();
-       
-        public void OnDialogueEnd()
+        public Array<Dialogue> dialogues = new Array<Dialogue>();
+
+        public override void _Ready()
         {
-            GD.Print("My dialogue ended");
+            DialogueBox.OnDialogueExit += OnDialogueEnd;
 
         }
-        public void Connect(DialogueBox dialogueBox)
+
+        public void OnDialogueEnd()
         {
-            dialogueBox.OnDialogueEnd += OnDialogueEnd;
-            GD.Print("Conected");
+            foreach (var item in GetChildren())
+            {
+                if (item is IInteractable interactable)
+                {
+                     interactable.Interact();
+                }
+
+            }
         }
-        public void Disconnect(DialogueBox dialogueBox)
+
+        public void SetDialogue(Array<Dialogue> newDialogue)
         {
-            dialogueBox.OnDialogueEnd -= OnDialogueEnd;
-            GD.Print("Disconnected");
+            dialogues = newDialogue;
+        }
+
+        public override void _ExitTree()
+        {
+            DialogueBox.OnDialogueExit -= OnDialogueEnd;
         }
 
     }

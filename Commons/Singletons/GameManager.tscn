@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxjs36tmrcfi6"]
+
+[ext_resource type="Script" path="res://Commons/Singletons/GameManager.cs" id="1_jntou"]
+
+[node name="GameManager" type="Node" groups=["GameManager"]]
+script = ExtResource("1_jntou")
